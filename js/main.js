@@ -56,18 +56,14 @@ function main(states_geo)
 							count = d.properties.count;
 							return color( scale_count(count) );
 						})
-						.each(write_label);
-
-		function write_label(d, i)
-		{
-			var text = svg.append('text')
-							.attr('dx', 2)
-							.attr('dy', 30);
-
-			text.append("textPath")
-				    .attr("xlink:href","#path" + i)
-				    .text(d.properties.name);
-		};
+		$('svg g path').tipsy({
+			gravity: 'w',
+			html: true,
+			title: function() {
+				var d = this.__data__, state = d.properties.name;
+				return state;
+			}
+		});
 						debugger;
 	};
 	d3.csv('./data/map/borrower_states.csv', add_count_to_states);
