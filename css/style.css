@@ -1,0 +1,27 @@
+g.group {
+ 	position: absolute;
+	text-align: center;
+	width: 60px;
+	height: 28px;
+	padding: 2px;
+	font: 12px sans-serif;
+	background: white;
+	border: 0px;
+	border-radius: 8px;
+}
+path {
+	fill:rgb(213,222,217);
+	stroke-width: .6;
+	stroke: #b95656;
+}
+/* On mouse hover, lighten state color */
+path:hover {
+	fill-opacity: .7;
+	background-color: black;
+}
+h2{
+	text-align: center;
+}
+textPath {
+	fill: blue;
+}
