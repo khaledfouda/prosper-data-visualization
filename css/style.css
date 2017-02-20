@@ -1,13 +1,13 @@
-g.group {
+svg {
  	position: absolute;
 	text-align: center;
-	width: 60px;
-	height: 28px;
 	padding: 2px;
 	font: 12px sans-serif;
-	background: white;
+	background: #fff;
 	border: 0px;
 	border-radius: 8px;
+	margin-left: 75px;
+
 }
 path {
 	fill:rgb(213,222,217);
