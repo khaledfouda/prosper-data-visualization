@@ -1,27 +1,52 @@
+h2{
+	text-align: center;
+}
 svg {
  	position: absolute;
 	text-align: center;
-	padding: 2px;
+	padding: 0px;
 	font: 12px sans-serif;
 	background: #fff;
 	border: 0px;
 	border-radius: 8px;
-	margin-left: 75px;
-
+	margin-left: 0px;
 }
-path {
+/****************************/
+/* draw_map*/
+.states {
 	fill:rgb(213,222,217);
 	stroke-width: .6;
 	stroke: #b95656;
 }
 /* On mouse hover, lighten state color */
-path:hover {
+.states:hover {
 	fill-opacity: .7;
 	background-color: black;
 }
-h2{
-	text-align: center;
+/***************************\
+/* draw_legen() */
+.arc {
+    border: 1px solid;
+    fill: #8FAAE5;
+    transform-origin: left;
+
 }
-textPath {
-	fill: blue;
+.arc_text {
+	text-align: justify;
+	font-size: 170%;
+	font-weight: bold;
+	fill: red;
 }
+.notes {
+	text-align: left;
+	font-weight: bold;
+	font-size:120%;
+}
+/******************************/
+
+
+
+
+
+
+
