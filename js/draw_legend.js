@@ -1,17 +1,18 @@
-function draw_legend(legend_svg_g)
+//"use strict";
+function draw_legend( legend_svg_g, width, height, data)
 {
-	var width = 520 ,
-	    height = 500,
-		twoPi = 2 * Math.PI, // Full circle
+	var twoPi = 2 * Math.PI, // Full circle
 		radius = 5,
 		gap = 22,
 		cx = 200,
 		cy = 200,
-		nan_percent = 0.0484;
+		nan_percent = 0.0484,
+		total_count_sum = 113937.0,
+		nan_count = 5515.0;
 
 	var arc = d3.svg.arc()
 			.startAngle(0)
-			.endAngle(twoPi * (1 - nan_percent) )
+			.endAngle(twoPi * (1 - (nan_count / total_count_sum) ) )
 			.innerRadius(0 + gap * radius)
 			.outerRadius(20 + gap * radius);
 
@@ -27,14 +28,16 @@ function draw_legend(legend_svg_g)
 		.attr('class','arc_text');
 
 	text.append('tspan')
-		.text( (1-nan_percent)*100 + '%' );
+		.text( (1-nan_percent)*100 + '%' )
+		.attr('id','t1');
 	text.append('tspan')
 		.text( '108422 Loans' )
 		.attr('x',cx - 60 )
-		.attr("dy",40);
+		.attr("dy",40)
+		.attr('id','t2');
 
 	// add a  list, (some notes, under the arc)
-	notes = legend_svg_g.append('g')
+	var notes = legend_svg_g.append('g')
 					.attr('class','notes')
 				.append('text')
 					.attr('dx', 0)
@@ -54,4 +57,40 @@ function draw_legend(legend_svg_g)
 			.attr('x',0)
 			.attr('dy',30)
 			.text('* There is a 5515(4.84%) loans which doesn\'t include a state (NaN values).');
-}
+
+	//****************************************************
+	// ******************* ANIMATION *********************
+	//debugger;
+	var total = 0.0;
+	/*function animate(id)
+	{
+		if (data[id].state != 'nan')
+		{
+			//calculate ratio
+			var count = +data[id].count;
+			total = total + count;
+			var ratio = total / total_count_sum;
+
+			// update the circle
+			arc.endAngle(twoPi *  ratio  );
+			legend_svg_g.select('path.arc')
+				.attr('d',arc);
+
+			// update the text
+			legend_svg_g.select('tspan#t1')
+				.text( (ratio*100).toFixed(2) + '%' );
+			legend_svg_g.select('tspan#t2')
+				.text( total.toLocaleString()+' Loans' );
+
+		}
+		//debugger;
+		if ((id+1) == data.length  ){ return; }
+		else { setTimeout( function(){ animate(id+1); } , 500); }
+
+	}
+
+	animate(0);*/
+	//debugger;
+return arc;
+
+};

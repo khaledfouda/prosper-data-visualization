@@ -1,3 +1,4 @@
+"use strict";
 d3.queue()
 	.defer(d3.json,'data/map/us-states-geo.json')
 	.defer(d3.csv,'data/map/borrower_states.csv')
@@ -6,12 +7,13 @@ d3.queue()
 
 function main(error, states_geo, states_borrower)
 {
-	"use strict";
 	var margin = 20,
 		mapWidth = 900,
-		mapHeight = 600,
+		legendWdith = 520,
 		width = 1500,
-		height = 600;
+		height = 600,
+		twoPi = 2 * Math.PI,
+		total_count_sum = 113937.0;
 
 	d3.select('body').append('h2').text('Data visualization of the borrowers at Prosper.com');
 
@@ -25,6 +27,8 @@ function main(error, states_geo, states_borrower)
 								.attr('transform','translate('+mapWidth+',0)');
 
 	//  append count from states_borrower to states_geo
+	// also change the variable "id" [index] for sorting, the highest count value will take [1] and the lowest would take the highest index.
+	var index = 0;
 	for (var i = 0; i < states_borrower.length; i++)
 	{
 		var state = states_borrower[i].state,
@@ -36,16 +40,76 @@ function main(error, states_geo, states_borrower)
 			if (geo_state == state)
 			{
 				states_geo.features[j].properties.count = count;
+				states_geo.features[j].id = index
+				index++ ;
 				break;
 			}
 		}
 	}
-	var map = draw_map(map, mapWidth, mapHeight, states_geo)
-	var legend = draw_legend(legend)
+
+	var arc_object  = draw_legend(legend, legendWdith, height, states_borrower);
+	var color_scale = draw_map(map, mapWidth, height, states_geo);
+
+	var total = 0.0;
+	function animate(id)
+	{
+		debugger;
+		// UPDATE MAP
+		map.select('path#path'+id+'.states')
+		//.transition()
+			//.duration('500')
+		.style('fill',function(d)
+			{
+				var count = d.properties.count;
+				return color_scale( count );
+			});
+		//*************
+		// UPDATE LEGEND
+		if (states_borrower[id].state != 'nan')
+		{
+			//calculate ratio
+			var count = +states_borrower[id].count;
+			total = total + count;
+			var ratio = total / total_count_sum;
+
+			// update the circle
+			arc_object.endAngle(twoPi *  ratio  );
+			legend.select('path.arc')
+				.attr('d',arc_object);
+
+			// update the text
+			legend.select('tspan#t1')
+				.text( (ratio*100).toFixed(2) + '%' );
+			legend.select('tspan#t2')
+				.text( total.toLocaleString()+' Loans' );
+
+		}
+		//*************************************
+		if (id == 51 ){ return; }
+		//recurrsion
+		else { setTimeout(function(){animate(id+1)},2000); }
+
+	}
+	// clear all the colors first.
+	map.selectAll('path.states').style('fill','white');
+	animate(0)
 
 }
 
 
+
+
+
+
+
+
+
+
+	//	debugger;
+	/*d3.queue(1)
+	.defer(draw_legend, legend, legendWdith, height, states_borrower)
+	.defer(draw_map, map, mapWidth, height, states_geo)
+	.awaitAll(function(){});*/
 /*
 **********************************************************
 These projects helped me alot,
