@@ -33,7 +33,6 @@ function main(error, states_geo, states_borrower)
 	{
 		var state = states_borrower[i].state,
 			count = states_borrower[i].count;
-
 		for (var j = 0; j < states_geo.features.length; j++)
 		{
 			var geo_state = states_geo.features[j].properties.name;
@@ -46,54 +45,72 @@ function main(error, states_geo, states_borrower)
 			}
 		}
 	}
-
 	var arc_object  = draw_legend(legend, legendWdith, height, states_borrower);
 	var color_scale = draw_map(map, mapWidth, height, states_geo);
 
+	/***************************************
+	************ ANIMATION ******************
+	*****************************************/
+	map.append('text')
+			.attr("x", '600')
+			.attr('y','80')
+			.attr('class','state_label')
 	var total = 0.0;
 	function animate(id)
 	{
-		debugger;
-		// UPDATE MAP
+		//debugger;
+		//******************************
+		//        UPDATE MAP
+		//******************************
 		map.select('path#path'+id+'.states')
-		//.transition()
-			//.duration('500')
-		.style('fill',function(d)
-			{
+			.style('fill',function(d)
+				{
 				var count = d.properties.count;
 				return color_scale( count );
-			});
-		//*************
-		// UPDATE LEGEND
-		if (states_borrower[id].state != 'nan')
-		{
-			//calculate ratio
-			var count = +states_borrower[id].count;
-			total = total + count;
-			var ratio = total / total_count_sum;
-
-			// update the circle
-			arc_object.endAngle(twoPi *  ratio  );
-			legend.select('path.arc')
-				.attr('d',arc_object);
-
-			// update the text
-			legend.select('tspan#t1')
-				.text( (ratio*100).toFixed(2) + '%' );
-			legend.select('tspan#t2')
-				.text( total.toLocaleString()+' Loans' );
-
-		}
+				});
 		//*************************************
-		if (id == 51 ){ return; }
-		//recurrsion
-		else { setTimeout(function(){animate(id+1)},2000); }
+		//         UPDATE LEGEND
+		//***********************************
+		//calculate ratio
+		var state = states_borrower[id].state,
+			count = +states_borrower[id].count;
+		total = total + count;
+		var ratio = total / total_count_sum;
+
+		// update the circle
+		arc_object.endAngle(twoPi *  ratio  );
+		legend.select('path.arc')
+			.attr('d',arc_object);
+
+		// update the text
+		legend.select('tspan#t1')
+			.text( (ratio*100).toFixed(2) + '%' );
+		legend.select('tspan#t2')
+			.text( total.toLocaleString()+' Loans' );
+		//*******************************************
+		//              STATE LABEL
+		//********************************************
+		map.select('text.state_label')
+			.text(state+",  "+count+" Loans");
+
+
+
+		//********************************
+		// call the function for all the states.
+		if (id == 49 ){
+			map.select('text.state_label').remove();
+			return;
+		}
+		//recursion
+		else {
+		 setTimeout(function(){animate(id+1)},1000);
+		}
 
 	}
-	// clear all the colors first.
+	// clear all colors in the map first.
 	map.selectAll('path.states').style('fill','white');
-	animate(0)
-
+	// start animation
+	animate(0);
 }
 
 
@@ -101,15 +118,6 @@ function main(error, states_geo, states_borrower)
 
 
 
-
-
-
-
-	//	debugger;
-	/*d3.queue(1)
-	.defer(draw_legend, legend, legendWdith, height, states_borrower)
-	.defer(draw_map, map, mapWidth, height, states_geo)
-	.awaitAll(function(){});*/
 /*
 **********************************************************
 These projects helped me alot,

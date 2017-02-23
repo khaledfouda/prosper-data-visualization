@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 function draw_legend( legend_svg_g, width, height, data)
 {
 	var twoPi = 2 * Math.PI, // Full circle
@@ -58,39 +58,5 @@ function draw_legend( legend_svg_g, width, height, data)
 			.attr('dy',30)
 			.text('* There is a 5515(4.84%) loans which doesn\'t include a state (NaN values).');
 
-	//****************************************************
-	// ******************* ANIMATION *********************
-	//debugger;
-	var total = 0.0;
-	/*function animate(id)
-	{
-		if (data[id].state != 'nan')
-		{
-			//calculate ratio
-			var count = +data[id].count;
-			total = total + count;
-			var ratio = total / total_count_sum;
-
-			// update the circle
-			arc.endAngle(twoPi *  ratio  );
-			legend_svg_g.select('path.arc')
-				.attr('d',arc);
-
-			// update the text
-			legend_svg_g.select('tspan#t1')
-				.text( (ratio*100).toFixed(2) + '%' );
-			legend_svg_g.select('tspan#t2')
-				.text( total.toLocaleString()+' Loans' );
-
-		}
-		//debugger;
-		if ((id+1) == data.length  ){ return; }
-		else { setTimeout( function(){ animate(id+1); } , 500); }
-
-	}
-
-	animate(0);*/
-	//debugger;
-return arc;
-
+	return arc;
 };

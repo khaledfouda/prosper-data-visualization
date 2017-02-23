@@ -44,28 +44,6 @@ function draw_map(map_svg_g, width, height, data)
 			return state+", "+count;
 		}
 	});
-	//**********************************
-	//******** ANIMATION ***************
-	//**********************************
-	/*function animate(id)
-	{
-		map_svg_g.select('path#path'+id+'.states')
-		.transition()
-			.duration('500')
-		.style('fill',function(d)
-			{
-				var count = d.properties.count;
-				return color( count );
-			});
-		if (id == 52 ){ return; }
-		//recurrsion
-		else { setTimeout(function(){animate(id+1)},500); }
 
-	};
-	// clear all the colors first.
-	map_svg_g.selectAll('path.states').style('fill','white');
-	// call the function for the first time
-	animate(0);
-*/
-return color
+	return color
 }

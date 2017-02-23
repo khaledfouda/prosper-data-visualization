@@ -43,7 +43,13 @@ svg {
 	font-size:120%;
 }
 /******************************/
-
+/* animate() */
+.state_label {
+	text-align: justify;
+	font-size: 200%;
+	font-weight: bold;
+	fill: red;
+}
 
 
 
