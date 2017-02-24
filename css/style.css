@@ -1,5 +1,15 @@
-h2{
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+h2.title{
 	text-align: center;
+}
+h3.info {
+  text-align: left;
+  padding-left: 22px;
 }
 svg {
  	position: absolute;
@@ -20,22 +30,37 @@ svg {
 }
 /* On mouse hover, lighten state color */
 .states:hover {
+	stroke-width: 1;
+	stroke:#ff0000;
 	fill-opacity: .7;
 	background-color: black;
 }
+
 /***************************\
 /* draw_legen() */
-.arc {
+.total_arc {
     border: 1px solid;
     fill: #8FAAE5;
     transform-origin: left;
 
 }
-.arc_text {
+.state_arc {
+  border: 1px solid;
+  fill: #c7d9ff;
+  transform-origin: right;
+
+}
+.total_text {
 	text-align: justify;
 	font-size: 170%;
 	font-weight: bold;
 	fill: red;
+}
+.state_text {
+  text-align: center;
+	font-size: 150%;
+	font-weight: 700;
+	fill: #ff3b3b;
 }
 .notes {
 	text-align: left;
@@ -50,9 +75,11 @@ svg {
 	font-weight: bold;
 	fill: red;
 }
-
-
-
-
-
-
+.add_map_dec {
+	stroke-width: 3;
+	stroke:#ff0000;
+}
+.rmv_map_dec {
+	stroke-width: .6;
+	stroke: #b95656;
+}

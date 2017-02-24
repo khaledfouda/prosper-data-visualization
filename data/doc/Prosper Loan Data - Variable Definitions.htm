@@ -1,0 +1,336 @@
+<style type="text/css">
+.table { width:800px;background-color:#eee;border-collapse:collapse; }
+.table td { padding:5px;border:1px solid #000; }
+.diff { background-color: #DF9488; }
+</style>
+
+<table class="table table-bordered table-hover table-condensed">
+<tbody><tr>
+<td>Variable</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>ListingKey</td>
+<td>Unique key for each listing, same value as the &#39;key&#39; used in the listing object in the API.</td>
+</tr>
+<tr>
+<td>ListingNumber</td>
+<td>The number that uniquely identifies the listing to the public as displayed on the website.</td>
+</tr>
+<tr >
+<td>ListingCreationDate</td>
+<td>The date the listing was created.</td>
+</tr>
+<tr>
+<td>CreditGrade</td>
+<td>The Credit rating that was assigned at the time the listing went live. Applicable for listings pre-2009 period and will only be populated for those listings.</td>
+</tr>
+<tr class = 'diff'>
+<td>Term</td>
+<td>The length of the loan expressed in months.</td>
+</tr>
+<tr class = 'diff'>
+<td>LoanStatus</td>
+<td>The current status of the loan: Cancelled,  Chargedoff, Completed, Current, Defaulted, FinalPaymentInProgress, PastDue. The PastDue status will be accompanied by a delinquency bucket.</td>
+</tr>
+<tr class = 'diff'>
+<td>ClosedDate</td>
+<td>Closed date is applicable for Cancelled, Completed, Chargedoff and Defaulted loan statuses. </td>
+</tr>
+<tr>
+<td>BorrowerAPR</td>
+<td>The Borrower&#39;s Annual Percentage Rate (APR) for the loan.</td>
+</tr>
+<tr>
+<td>BorrowerRate</td>
+<td>The Borrower&#39;s interest rate for this loan. </td>
+</tr>
+<tr class = 'diff'>
+<td>LenderYield</td>
+<td>The Lender yield on the loan. Lender yield is equal to the interest rate on the loan less the servicing fee.</td>
+</tr>
+<tr>
+<td>EstimatedEffectiveYield</td>
+<td>Effective yield is equal to the borrower interest rate (i) minus the servicing fee rate, (ii) minus estimated uncollected interest on charge-offs, (iii) plus estimated collected late fees.  Applicable for loans originated after July 2009.</td>
+</tr>
+<tr>
+<td>EstimatedLoss</td>
+<td>Estimated loss is the estimated principal loss on charge-offs. Applicable for loans originated after July 2009.</td>
+</tr>
+<tr>
+<td>EstimatedReturn</td>
+<td>The estimated return assigned to the listing at the time it was created. Estimated return is the difference between the Estimated Effective Yield and the Estimated Loss Rate. Applicable for loans originated after July 2009.</td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperRating (numeric)</td>
+<td>The  Prosper Rating assigned at the time the listing was created: 0 - N/A, 1 - HR, 2 - E, 3 - D, 4 - C, 5 - B, 6 - A, 7 - AA.  Applicable for loans originated after July 2009.</td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperRating (Alpha)</td>
+<td>The Prosper Rating assigned at the time the listing was created between AA - HR.  Applicable for loans originated after July 2009.</td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperScore</td>
+<td>A custom risk score built using historical Prosper data. The score ranges from 1-10, with 10 being the best, or lowest risk score.  Applicable for loans originated after July 2009.</td>
+</tr>
+<tr>
+<td>ListingCategory</td>
+<td>The category of the listing that the borrower selected when posting their listing: 0 - Not Available, 1 - Debt Consolidation, 2 - Home Improvement, 3 - Business, 4 - Personal Loan, 5 - Student Use, 6 - Auto, 7- Other, 8 - Baby&amp;Adoption, 9 - Boat, 10 - Cosmetic Procedure, 11 - Engagement Ring, 12 - Green Loans, 13 - Household Expenses, 14 - Large Purchases, 15 - Medical/Dental, 16 - Motorcycle, 17 - RV, 18 - Taxes, 19 - Vacation, 20 - Wedding Loans</td>
+</tr>
+<tr class = 'diff'>
+<td>BorrowerState</td>
+<td>The two letter abbreviation of the state of the address of the borrower at the time the Listing was created.</td>
+</tr>
+<tr class = 'diff'>
+<td>Occupation</td>
+<td>The Occupation selected by the Borrower at the time they created the listing.</td>
+</tr>
+<tr class = 'diff'>
+<td>EmploymentStatus</td>
+<td>The employment status of the borrower at the time they posted the listing.</td>
+</tr>
+<tr class = 'diff'>
+<td>EmploymentStatusDuration</td>
+<td>The length in months of the employment status at the time the listing was created.</td>
+</tr>
+<tr class = 'diff'>
+<td>IsBorrowerHomeowner</td>
+<td>A Borrower will be classified as a homowner if they have a mortgage on their credit profile or provide documentation confirming they are a homeowner.</td>
+</tr>
+<tr class = 'diff'>
+<td>CurrentlyInGroup</td>
+<td>Specifies whether or not the Borrower was in a group at the time the listing was created.</td>
+</tr>
+<tr class = 'diff'>
+<td>GroupKey</td>
+<td>The Key of the group in which the Borrower is a member of. Value will be null if the borrower does not have a group affiliation.</td>
+</tr>
+<tr>
+<td>DateCreditPulled</td>
+<td>The date the credit profile was pulled. </td>
+</tr>
+<tr>
+<td>CreditScoreRangeLower</td>
+<td>The lower value representing the range of the borrower&#39;s credit score as provided by a consumer credit rating agency.</td>
+</tr>
+<tr>
+<td>CreditScoreRangeUpper</td>
+<td>The upper value representing the range of the borrower&#39;s credit score as provided by a consumer credit rating agency. </td>
+</tr>
+<tr>
+<td>FirstRecordedCreditLine</td>
+<td>The date the first credit line was opened.</td>
+</tr>
+<tr>
+<td>CurrentCreditLines</td>
+<td>Number of current credit lines at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>OpenCreditLines</td>
+<td>Number of open credit lines at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>TotalCreditLinespast7years</td>
+<td>Number of credit lines in the past seven years at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>OpenRevolvingAccounts</td>
+<td>Number of open revolving accounts at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>OpenRevolvingMonthlyPayment</td>
+<td>Monthly payment on revolving accounts at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>InquiriesLast6Months</td>
+<td>Number of inquiries in the past six months at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>TotalInquiries</td>
+<td>Total number of inquiries at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>CurrentDelinquencies</td>
+<td>Number of accounts delinquent at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>AmountDelinquent</td>
+<td>Dollars delinquent at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>DelinquenciesLast7Years</td>
+<td>Number of delinquencies in the past 7 years at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>PublicRecordsLast10Years</td>
+<td>Number of public records in the past 10 years at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>PublicRecordsLast12Months</td>
+<td>Number of public records in the past 12 months at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>RevolvingCreditBalance</td>
+<td>Dollars of revolving credit at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>BankcardUtilization</td>
+<td>The percentage of available revolving credit that is utilized at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>AvailableBankcardCredit</td>
+<td>The total available credit via bank card at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>TotalTrades</td>
+<td>Number of trade lines ever opened at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>TradesNeverDelinquent</td>
+<td>Number of trades that have never been delinquent at the time the credit profile was pulled.</td>
+</tr>
+<tr class = 'diff'>
+<td>TradesOpenedLast6Months</td>
+<td>Number of trades opened in the last 6 months at the time the credit profile was pulled.</td>
+</tr>
+<tr>
+<td>DebtToIncomeRatio</td>
+<td>The debt to income ratio of the borrower at the time the credit profile was pulled. This value is Null if the debt to income ratio is not available. This value is capped at 10.01 (any debt to income ratio larger than 1000% will be returned as 1001%).</td>
+</tr>
+<tr class = 'diff'>
+<td>IncomeRange</td>
+<td>The income range of the borrower at the time the listing was created.</td>
+</tr>
+<tr class = 'diff'>
+<td>IncomeVerifiable</td>
+<td>The borrower indicated they have the required documentation to support their income.</td>
+</tr>
+<tr class = 'diff'>
+<td>StatedMonthlyIncome</td>
+<td>The monthly income the borrower stated at the time the listing was created.</td>
+</tr>
+<tr>
+<td>LoanKey</td>
+<td>Unique key for each loan. This is the same key that is used in the API. </td>
+</tr>
+<tr class = 'diff'>
+<td>TotalProsperLoans</td>
+<td>Number of Prosper loans the borrower at the time they created this listing. This value will be null if the borrower had no prior loans. </td>
+</tr>
+<tr class = 'diff'>
+<td>TotalProsperPaymentsBilled</td>
+<td>Number of on time payments the borrower made on Prosper loans at the time they created this listing. This value will be null if the borrower had no prior loans.</td>
+</tr>
+<tr class = 'diff'>
+<td>OnTimeProsperPayments</td>
+<td>Number of on time payments the borrower had made on Prosper loans at the time they created this listing. This value will be null if the borrower has no prior loans.</td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperPaymentsLessThanOneMonthLate</td>
+<td>Number of payments the borrower made on Prosper loans that were less than one month late at the time they created this listing. This value will be null if the borrower had no prior loans. </td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperPaymentsOneMonthPlusLate</td>
+<td>Number of payments the borrower made on Prosper loans that were greater than one month late at the time they created this listing. This value will be null if the borrower had no prior loans.</td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperPrincipalBorrowed</td>
+<td>Total principal borrowed on Prosper loans at the time the listing was created. This value will be null if the borrower had no prior loans.</td>
+</tr>
+<tr class = 'diff'>
+<td>ProsperPrincipalOutstanding</td>
+<td>Principal outstanding on Prosper loans at the time the listing was created. This value will be null if the borrower had no prior loans.</td>
+</tr>
+<tr class = 'diff'>
+<td>ScorexChangeAtTimeOfListing</td>
+<td>Borrower&#39;s credit score change at the time the credit profile was pulled. This will be the change relative to the borrower&#39;s last Prosper loan. This value will be null if the borrower had no prior loans.</td>
+</tr>
+<tr>
+<td>LoanCurrentDaysDelinquent</td>
+<td>The number of days delinquent. </td>
+</tr>
+<tr>
+<td>LoanFirstDefaultedCycleNumber</td>
+<td>The cycle the loan was charged off. If the loan has not charged off the value will be null. </td>
+</tr>
+<tr>
+<td>LoanMonthsSinceOrigination</td>
+<td>Number of months since the loan originated.</td>
+</tr>
+<tr>
+<td>LoanNumber</td>
+<td>Unique numeric value associated with the loan.</td>
+</tr>
+<tr>
+<td>LoanOriginalAmount</td>
+<td>The origination amount of the loan.</td>
+</tr>
+<tr>
+<td>LoanOriginationDate</td>
+<td>The date the loan was originated.</td>
+</tr>
+<tr>
+<td>LoanOriginationQuarter</td>
+<td>The quarter in which the loan was originated.</td>
+</tr>
+<tr class = 'diff'>
+<td>MemberKey</td>
+<td>The unique key that is associated with the borrower. This is the same identifier that is used in the API member object. </td>
+</tr>
+<tr>
+<td>MonthlyLoanPayment</td>
+<td>The scheduled monthly loan payment.</td>
+</tr>
+<tr>
+<td>LP_CustomerPayments</td>
+<td>Pre charge-off cumulative gross payments made by the borrower on the loan. If the loan has charged off, this value will exclude any recoveries.</td>
+</tr>
+<tr>
+<td>LP_CustomerPrincipalPayments</td>
+<td>Pre charge-off cumulative principal payments made by the borrower on the loan. If the loan has charged off, this value will exclude any recoveries.</td>
+</tr>
+<tr>
+<td>LP_InterestandFees</td>
+<td>Pre charge-off cumulative interest and fees paid by the borrower. If the loan has charged off, this value will exclude any recoveries.</td>
+</tr>
+<tr>
+<td>LP_ServiceFees</td>
+<td>Cumulative service fees paid by the investors who have invested in the loan. </td>
+</tr>
+<tr>
+<td>LP_CollectionFees</td>
+<td>Cumulative collection fees paid by the investors who have invested in the loan.</td>
+</tr>
+<tr>
+<td>LP_GrossPrincipalLoss</td>
+<td>The gross charged off amount of the loan.</td>
+</tr>
+<tr>
+<td>LP_NetPrincipalLoss</td>
+<td>The principal that remains uncollected after any recoveries.</td>
+</tr>
+<tr>
+<td>LP_NonPrincipalRecoverypayments</td>
+<td>The interest and fee component of any recovery payments. The current payment policy applies payments in the following order: Fees, interest, principal.</td>
+</tr>
+<tr class = 'diff'>
+<td>PercentFunded</td>
+<td>Percent the listing was funded.</td>
+</tr>
+<tr>
+<td>Recommendations</td>
+<td>Number of recommendations the borrower had at the time the listing was created.</td>
+</tr>
+<tr>
+<td>InvestmentFromFriendsCount</td>
+<td>Number of friends that made an investment in the loan.</td>
+</tr>
+<tr>
+<td>InvestmentFromFriendsAmount</td>
+<td>Dollar amount of investments that were made by friends.</td>
+</tr>
+<tr>
+<td>Investors</td>
+<td>The number of investors that funded the loan.</td>
+</tr>
+</tbody></table>

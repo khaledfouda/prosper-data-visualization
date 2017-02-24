@@ -12,15 +12,16 @@ function main(error, states_geo, states_borrower)
 		legendWdith = 520,
 		width = 1500,
 		height = 600,
-		twoPi = 2 * Math.PI,
-		total_count_sum = 113937.0;
+		twoPi = 2.0 * Math.PI,
+		total_loans_sum = 113937.0;
 
-	d3.select('body').append('h2').text('Data visualization of the borrowers at Prosper.com');
-
+	d3.select('body').append('h2').attr('class','title').text('Data visualization of the borrowers at Prosper.com');
+	d3.select('body').append('h3').attr('class','info')
+			.text('Prosper is America’s first marketplace lending platform, with over $8 billion in funded loans.');
 	var svg = d3.select('body')
 				.append('svg')
-					.attr('width', width  )
-					.attr('height', height )
+					.attr('width', '100%'  )
+					.attr('height', '100%' )
 
 	var map    = svg.append('g').attr('class','map');
 	var legend = svg.append('g').attr('class','legend')
@@ -32,78 +33,82 @@ function main(error, states_geo, states_borrower)
 	for (var i = 0; i < states_borrower.length; i++)
 	{
 		var state = states_borrower[i].state,
-			count = states_borrower[i].count;
+				loans = states_borrower[i].loans;
 		for (var j = 0; j < states_geo.features.length; j++)
 		{
 			var geo_state = states_geo.features[j].properties.name;
 			if (geo_state == state)
 			{
-				states_geo.features[j].properties.count = count;
+				states_geo.features[j].properties.loans = loans;
 				states_geo.features[j].id = index
 				index++ ;
 				break;
 			}
 		}
 	}
-	var arc_object  = draw_legend(legend, legendWdith, height, states_borrower);
 	var color_scale = draw_map(map, mapWidth, height, states_geo);
+	var arc_objects  = draw_legend(legend, legendWdith, height, states_borrower);
 
 	/***************************************
 	************ ANIMATION ******************
 	*****************************************/
-	map.append('text')
-			.attr("x", '600')
-			.attr('y','80')
-			.attr('class','state_label')
 	var total = 0.0;
+	var loans_extent = d3.extent(states_borrower, function(d){ return +d.loans; })
+	var time_ratio = d3.scale.linear().domain(loans_extent).range([0,2]);
 	function animate(id)
 	{
 		//debugger;
 		//******************************
 		//        UPDATE MAP
 		//******************************
+		map.select('path#path'+(id-1))
+			.attr('class','states');
+
 		map.select('path#path'+id+'.states')
+			.attr('class','add_map_dec')
 			.style('fill',function(d)
 				{
-				var count = d.properties.count;
-				return color_scale( count );
+				var loans = d.properties.loans;
+				return color_scale( loans );
 				});
 		//*************************************
 		//         UPDATE LEGEND
 		//***********************************
 		//calculate ratio
 		var state = states_borrower[id].state,
-			count = +states_borrower[id].count;
-		total = total + count;
-		var ratio = total / total_count_sum;
+				loans = +states_borrower[id].loans;
+		total = total + loans;
+		var ratio = total / total_loans_sum;
 
 		// update the circle
-		arc_object.endAngle(twoPi *  ratio  );
-		legend.select('path.arc')
-			.attr('d',arc_object);
+		//debugger;
+		arc_objects[0].endAngle(twoPi *  ratio  );
+		legend.select('path.total_arc')
+			.attr('d',arc_objects[0]);
+		arc_objects[1].endAngle( twoPi * loans/loans_extent[1] );
+		legend.select('path.state_arc')
+			.attr('d',arc_objects[1])
 
 		// update the text
-		legend.select('tspan#t1')
-			.text( (ratio*100).toFixed(2) + '%' );
-		legend.select('tspan#t2')
-			.text( total.toLocaleString()+' Loans' );
+		var text = legend.select('.total_text');
+		text.select('#percent').text( (ratio*100).toFixed(2) + '%' );
+		text.select('#loans').text( total.toLocaleString()+' Loans' );
+		var text = legend.select('.state_text');
+		text.select('#state').text(state);
+		text.select('#percent').text( (loans/total_loans_sum * 100).toFixed(2) + '%' );
+		text.select('#loans').text(loans.toLocaleString() + ' Loans');
 		//*******************************************
-		//              STATE LABEL
-		//********************************************
-		map.select('text.state_label')
-			.text(state+",  "+count+" Loans");
-
-
-
 		//********************************
 		// call the function for all the states.
 		if (id == 49 ){
-			map.select('text.state_label').remove();
+			map.select('path#path'+(id))
+				.attr('class','states');
 			return;
 		}
 		//recursion
 		else {
-		 setTimeout(function(){animate(id+1)},1000);
+		 setTimeout(function(){animate(id+1)},200+1000*time_ratio(loans));
+		 debugger;
 		}
 
 	}
@@ -129,5 +134,3 @@ http://codepen.io/anon/pen/NqWQNg
 *********************************************************
 
 */
-
-
