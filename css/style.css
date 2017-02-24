@@ -4,12 +4,15 @@ html, body {
   margin: 0;
   padding: 0;
 }
-h2.title{
+.title{
 	text-align: center;
 }
-h3.info {
+.info {
   text-align: left;
-  padding-left: 22px;
+  padding-left: 30px;
+  font: 14px sans-serif;
+
+
 }
 svg {
  	position: absolute;

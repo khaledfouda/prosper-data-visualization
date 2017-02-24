@@ -1,7 +1,7 @@
 "use strict";
 d3.queue()
-	.defer(d3.json,'data/map/us-states-geo.json')
-	.defer(d3.csv,'data/map/borrower_states.csv')
+	.defer(d3.json,'data/us-states-geo.json')
+	.defer(d3.csv,'data/borrower_states.csv')
 	.await(main);
 
 
@@ -15,9 +15,12 @@ function main(error, states_geo, states_borrower)
 		twoPi = 2.0 * Math.PI,
 		total_loans_sum = 113937.0;
 
-	d3.select('body').append('h2').attr('class','title').text('Data visualization of the borrowers at Prosper.com');
-	d3.select('body').append('h3').attr('class','info')
-			.text('Prosper is America’s first marketplace lending platform, with over $8 billion in funded loans.');
+	d3.select('body').append('h3').attr('class','title').text('Data visualization of the borrowers at Prosper.com');
+	d3.select('body').append('p').attr('class','info')
+			.html('Prosper is America’s first marketplace lending platform,\
+			 with over $8 billion in funded loans. for more information visit <a href="https://www.prosper.com/">Prosper.com</a>. <br><br> \
+	Here I visualize the number of loans per state, the state with higher number of loans has a darker color.');
+
 	var svg = d3.select('body')
 				.append('svg')
 					.attr('width', '100%'  )
