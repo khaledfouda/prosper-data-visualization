@@ -25,7 +25,6 @@ I felt that the red font isn't bad, I don't know if I'm right or wrong.
 3.
 >Really good animation is "clean" and combines the animation with the user exploration very well.
 
-
 ---------------   
 #### Resources
 
