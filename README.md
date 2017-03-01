@@ -1,5 +1,10 @@
 # visualizing states of prosper.com borrowers  
 
+### Gist
+the visualization can't be viewed on gist from this link : http://bl.ocks.org/bekaa/raw/8e4ca9f935443ba6ddeb2ad5df4402e6/  
+
+------------
+
 ### Summary  
 Prosper is America’s first marketplace lending platform, with over $8 billion in funded loans. for more information visit [Prosper.com](https://www.prosper.com/).     
 Based on the published loan data, I extracted the states with the number of loans made of each state. [data/borrower_states.csv].  
@@ -32,9 +37,9 @@ The loans dataset https://s3.amazonaws.com/udacity-hosted-downloads/ud651/prospe
 
 These projects helped me alot,
 
-http://bl.ocks.org/ilyabo/1373263                        ----  tipsy example
-https://github.com/jaz303/tipsy                          ----  tipsy library
-https://bl.ocks.org/mbostock/6408735                     ----  buttons example
-http://codepen.io/anon/pen/NqWQNg                        ----  arc example
-http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----  us-states map example
+http://bl.ocks.org/ilyabo/1373263                        ----  tipsy example  
+https://github.com/jaz303/tipsy                          ----  tipsy library  
+https://bl.ocks.org/mbostock/6408735                     ----  buttons example  
+http://codepen.io/anon/pen/NqWQNg                        ----  arc example  
+http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----  us-states map example  
 -------------------------
