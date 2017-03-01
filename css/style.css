@@ -11,8 +11,6 @@ html, body {
   text-align: left;
   padding-left: 30px;
   font: 14px sans-serif;
-
-
 }
 svg {
  	position: absolute;
@@ -42,10 +40,10 @@ svg {
 }
  rect
  {
-  fill: yellow;
+  fill: none;
   pointer-events: all;
   cursor: pointer;
-  opacity: .01;
+  opacity: 0;
 }
 /****************************/
 /* draw_map*/
@@ -95,17 +93,7 @@ svg {
 }
 /******************************/
 /* animate() */
-.state_label {
-	text-align: justify;
-	font-size: 200%;
-	font-weight: bold;
-	fill: red;
-}
 .add_map_dec {
 	stroke-width: 3;
 	stroke:#ff0000;
-}
-.rmv_map_dec {
-	stroke-width: .6;
-	stroke: #b95656;
 }

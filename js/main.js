@@ -38,6 +38,11 @@ function main(error, states_geo, states_borrower)
 	// also change the variable "id" [index] for sorting,
 	//	  the highest count value will take [1] and the lowest would take the highest index.
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	// reset id variable in states.geo.features
+	for (var j = 0; j < states_geo.features.length; j++)
+	{
+		states_geo.features[j].id = -1
+	}
 	var index = 0;
 	for (var i = 0; i < states_borrower.length; i++)
 	{
@@ -119,7 +124,7 @@ function main(error, states_geo, states_borrower)
 		//*******************************************
 		//********************************
 		// call the function for all the states.
-		if (id == 49 ) // indicate the last element(state) .
+		if (id == 56 ) // indicate the last element(state) .
 		{
 			running_flag = false;
 			map.select('path#path'+(id)).attr('class','states');
@@ -152,9 +157,7 @@ function main(error, states_geo, states_borrower)
 		.attr("transform", "translate(" + (-30) + "," + (-30) + ")")
 		.attr('width', 60)
 		.attr('height', 60)
-		.on("click", function() {
-          reanimate(true)
-        });
+		.on("click", function() { reanimate(true) });
 	// update the tooltip.
 	$('.skipButton').tipsy({
 		gravity: 'w',
@@ -176,11 +179,7 @@ function main(error, states_geo, states_borrower)
  		.attr("transform", "translate(" + ( -30) + "," + (-30) + ")")
  		.attr('width', 60)
  		.attr('height', 60)
- 		.on("click", function() {
-			reanimate()
-			//reanimate(true)
-		   //reanimate()
-         });
+ 		.on("click", function() { reanimate() });
 	// update the tooltip.
 	 $('.playButton').tipsy({
  		gravity: 'w',
@@ -236,21 +235,3 @@ function main(error, states_geo, states_borrower)
 	// call for the first time .
 	reanimate();
 }
-
-
-
-
-
-/*
-**********************************************************
-These projects helped me alot,
-
-http://bl.ocks.org/ilyabo/1373263   >> tipsy example
-https://github.com/jaz303/tipsy     >> tipsy library
-https://bl.ocks.org/mbostock/6408735  >> buttons example
-http://codepen.io/anon/pen/NqWQNg   >> arc example
-http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
-
-*********************************************************
-
-*/
