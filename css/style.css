@@ -25,6 +25,29 @@ svg {
 	margin-left: 0px;
 }
 /****************************/
+/* buttons */
+.skipButton, .playButton
+{
+    fill: white;
+    stroke: black;
+    stroke-width: 3px;
+}
+.buttons .skipButton:hover path
+{
+    fill: red;
+}
+.buttons .playButton:hover path
+{
+    fill: red;
+}
+ rect
+ {
+  fill: yellow;
+  pointer-events: all;
+  cursor: pointer;
+  opacity: .01;
+}
+/****************************/
 /* draw_map*/
 .states {
 	fill:rgb(213,222,217);
