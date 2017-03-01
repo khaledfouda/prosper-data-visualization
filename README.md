@@ -1,7 +1,7 @@
 # visualizing states of prosper.com borrowers  
 
 ### Gist
-the visualization can't be viewed on gist from this link : http://bl.ocks.org/bekaa/raw/8e4ca9f935443ba6ddeb2ad5df4402e6/  
+the visualization can be viewed on gist from this link : http://bl.ocks.org/bekaa/raw/8e4ca9f935443ba6ddeb2ad5df4402e6/  
 
 ------------
 
@@ -49,4 +49,3 @@ http://codepen.io/anon/pen/NqWQNg                        ----  arc example
 http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----  us-states map example  
 
 -------------------------
-  
