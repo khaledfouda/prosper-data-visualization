@@ -130,7 +130,7 @@ function main(error, states_geo, states_borrower)
 			map.select('path#path'+(id)).attr('class','states');
 		}
 		//recursion
-		else  setTimeout(function(){animate(id+1)},2)//200+1000*time_ratio(loans));
+		else  setTimeout(function(){animate(id+1)},200+1000*time_ratio(loans));
 	}
 
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
