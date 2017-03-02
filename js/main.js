@@ -124,13 +124,13 @@ function main(error, states_geo, states_borrower)
 		//*******************************************
 		//********************************
 		// call the function for all the states.
-		if (id == 56 ) // indicate the last element(state) .
+		if (id == 49 ) // indicate the last element(state) .
 		{
 			running_flag = false;
 			map.select('path#path'+(id)).attr('class','states');
 		}
 		//recursion
-		else  setTimeout(function(){animate(id+1)},200+1000*time_ratio(loans));
+		else  setTimeout(function(){animate(id+1)},2)//200+1000*time_ratio(loans));
 	}
 
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
