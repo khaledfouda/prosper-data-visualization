@@ -20,20 +20,24 @@ function main(error, states_geo, states_borrower)
 	d3.select('body').append('h3').attr('class','title').text('Data visualization of the borrowers at Prosper.com');
 	// add some text below the title.
 	d3.select('body').append('p').attr('class','info')
-			.html('Prosper is America’s first marketplace lending platform,\
+		.html('Prosper is America’s first marketplace lending platform,\
 			 with over $8 billion in funded loans. for more information visit <a href="https://www.prosper.com/">Prosper.com</a>. <br><br> \
-	Here I visualize the number of loans per state, the state with higher number of loans has a darker color.');
+			 Here I visualize the number of loans per state, the state with higher number of loans has a darker color.');
 
 	var svg = d3.select('body')
 				.append('svg')
 					.attr('width', '100%'  )
 					.attr('height', '100%' )
+	var bounding = svg.node().getBoundingClientRect();
+	width = bounding.width;
+	height = bounding.height;
 
 	var map    = svg.append('g').attr('class','map');
 	var legend = svg.append('g').attr('class','legend')
-								.attr('transform','translate('+mapWidth+',0)');
+								.attr('transform','translate('+(width * .6)+',0)');
 
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	//.node().getBoundingClientRect()
 	//  append count from states_borrower to states_geo
 	// also change the variable "id" [index] for sorting,
 	//	  the highest count value will take [1] and the lowest would take the highest index.
@@ -41,13 +45,13 @@ function main(error, states_geo, states_borrower)
 	// reset id variable in states.geo.features
 	for (var j = 0; j < states_geo.features.length; j++)
 	{
-		states_geo.features[j].id = -1
+		states_geo.features[j].id = -1;
 	}
 	var index = 0;
 	for (var i = 0; i < states_borrower.length; i++)
 	{
 		var state = states_borrower[i].state,
-				loans = states_borrower[i].loans;
+			loans = states_borrower[i].loans;
 		for (var j = 0; j < states_geo.features.length; j++)
 		{
 			var geo_state = states_geo.features[j].properties.name;

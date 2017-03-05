@@ -3,8 +3,8 @@ function draw_map(map_svg_g, width, height, data)
 {
 	// convert map co-ordinates into pixels.
 	var projection = d3.geo.albersUsa()
-							.translate([width/2, height/2])
-							.scale([1300]);
+		.scale([1300])
+		.translate([width/2, 0]);
 	// draw the map
 	var path = d3.geo.path().projection(projection);
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -35,6 +35,7 @@ function draw_map(map_svg_g, width, height, data)
 			.style('fill',function(d)
 			{
 				var loans = d.properties.loans;
+				if (loans == 0) return '#fff'; // for states that has 0 loans.
 				return color( loans );
 			});
 	// show state name and count on mouse hover .[ tipsy - tooltip ]
