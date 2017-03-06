@@ -12,8 +12,8 @@ function draw_map(map_svg_g, width, height, data)
 	//	( the more loans states have the darker color it gets).
 	function color(d)
 	{
-		// scale Borrower State's count to range[1-9] **[52,6842]**
-		var scale_loans = d3.scale.linear().domain([6,52]).range([1,9]);
+		// scale Borrower State's count to range[1-9]
+		var scale_loans = d3.scale.linear().domain([52,6842]).range([1,9]);
 		// color range
 		var palette = ['#ffffd9','#edf8b1','#c7e9b4','#7fcdbb','#41b6c4',
 			'#1d91c0','#225ea8','#253494','#081d58'];
@@ -36,10 +36,9 @@ function draw_map(map_svg_g, width, height, data)
 			.attr('id', function(d){ return 'path'+ d.id; })
 			.style('fill',function(d)
 			{
-				var loans = d.properties.loans,
-					percent = d.properties.percent;
-				if (percent == 0) return '#fff'; // for states that has 0 loans.
-				return color( percent );
+				var loans = d.properties.loans;
+				if (loans == 0) return '#fff'; // for states that has 0 loans.
+				return color( loans );
 			});
 	// show state name and count on mouse hover .[ tipsy - tooltip ]
 	$('svg .map path').tipsy({
@@ -48,9 +47,8 @@ function draw_map(map_svg_g, width, height, data)
 		title: function() {
 			var d     = this.__data__,
 				state = d.properties.name,
-				loans = +d.properties.loans,
-				percent = +d.properties.percent;
-			return state+"  "+ percent.toLocaleString()+ ' Loans';
+				loans = d.properties.loans;
+			return state+"  "+ loans.toLocaleString()+ ' Loans';
 		}
 	});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-

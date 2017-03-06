@@ -1,7 +1,7 @@
 "use strict";
 d3.queue()
 	.defer(d3.json,'data/us-states-geo.json')
-	.defer(d3.csv,'data/annualIncome2.csv')
+	.defer(d3.csv,'data/borrower_states.csv')
 	.await(main);
 
 //*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -48,14 +48,12 @@ function main(error, states_geo, states_borrower)
 	for (var i = 0; i < states_borrower.length; i++)
 	{
 		var state   = states_borrower[i].state,
-			loans   = +states_borrower[i].loans,
-			percent = (+states_borrower[i].percent).toFixed(2);
+			loans   = +states_borrower[i].loans;
 		for (var j = 0; j < states_geo.features.length; j++)
 		{
 			var geo_state = states_geo.features[j].properties.name;
 			if (geo_state == state)
 			{
-				states_geo.features[j].properties.percent = percent;
 				states_geo.features[j].properties.loans = loans;
 				states_geo.features[j].id = index;
 				index++;
@@ -241,5 +239,5 @@ function main(error, states_geo, states_borrower)
 	}
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// call for the first time .
-	//reanimate();
+	reanimate();
 }
