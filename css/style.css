@@ -1,19 +1,24 @@
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+html,
+body
+{
+	zoom: 90%;
+	margin: 2px;
+	padding: 0;
 }
-.title{
+.title
+{
 	text-align: center;
+	font-size: 30px;
 }
-.info {
-  text-align: left;
-  padding-left: 30px;
-  font: 14px sans-serif;
+.info
+{
+	text-align: left;
+	padding-left: 30px;
+	font: 18px sans-serif;
 }
-svg {
- 	position: absolute;
+svg
+{
+	position: absolute;
 	text-align: center;
 	padding: 0px;
 	font: 12px sans-serif;
@@ -24,36 +29,42 @@ svg {
 }
 /****************************/
 /* buttons */
-.skipButton, .playButton
-{
-    fill: white;
-    stroke: black;
-    stroke-width: 3px;
-}
-.buttons .skipButton:hover path
-{
-    fill: red;
-}
+.buttons .skipButton.show:hover path,
 .buttons .playButton:hover path
 {
-    fill: red;
+	fill: red;
 }
- rect
- {
-  fill: none;
-  pointer-events: all;
-  cursor: pointer;
-  opacity: 0;
+.buttons .skipButton.show,
+.buttons .playButton
+{
+	fill: white;
+	stroke: black;
+	stroke-width: 3px;
 }
+.skipButton.show rect,
+.playButton rect
+{
+	fill: none;
+	pointer-events: all;
+	cursor: pointer;
+	opacity: 0;
+}
+.buttons .skipButton.hide
+{
+	fill: none;
+}
+
 /****************************/
 /* draw_map*/
-.states {
+.map .states
+{
 	fill:rgb(213,222,217);
 	stroke-width: .6;
 	stroke: #b95656;
 }
 /* On mouse hover, lighten state color */
-.states:hover {
+.map .states:hover
+{
 	stroke-width: 1;
 	stroke:#ff0000;
 	fill-opacity: .7;
@@ -62,38 +73,41 @@ svg {
 
 /***************************\
 /* draw_legen() */
-.total_arc {
-    border: 1px solid;
-    fill: #8FAAE5;
-    transform-origin: left;
-
+.legend .arcs .total_arc
+{
+	border: 1px solid;
+	fill: #8FAAE5;
+	transform-origin: left;
 }
-.state_arc {
-  border: 1px solid;
-  fill: #c7d9ff;
-  transform-origin: right;
-
+.legend .arcs .state_arc
+{
+	border: 1px solid;
+	fill: #c7d9ff;
+	transform-origin: right;
 }
-.total_text {
+.legend .arcs .total_text
+{
 	text-align: justify;
 	font-size: 170%;
 	font-weight: bold;
 	fill: red;
 }
-.state_text {
-  text-align: center;
+.legend .arcs .state_text
+{
+	text-align: center;
 	font-size: 150%;
 	font-weight: 700;
 	fill: #ff3b3b;
 }
-.notes {
+.legend .notes
+{
 	text-align: left;
-	font-weight: bold;
-	font-size:120%;
+	font: 18px sans-serif;
 }
 /******************************/
 /* animate() */
-.add_map_dec {
+.map .add_map_dec
+{
 	stroke-width: 3;
 	stroke:#ff0000;
 }

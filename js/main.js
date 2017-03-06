@@ -8,36 +8,33 @@ d3.queue()
 function main(error, states_geo, states_borrower)
 {
 	var margin = 20,
-		mapWidth = 900,
-		legendWdith = 520,
-		width = 1500,
+		map_width = 900,
+		legend_margin = map_width + 50,
+		width = 1700,
 		height = 600,
 		twoPi = 2.0 * Math.PI,
-		total_loans_sum = 113937.0,
-		nan_count = 5515.0;
+		total_loans_sum = 108422.0;
 
 	// add title.
 	d3.select('body').append('h3').attr('class','title').text('Data visualization of the borrowers at Prosper.com');
 	// add some text below the title.
 	d3.select('body').append('p').attr('class','info')
 		.html('Prosper is America’s first marketplace lending platform,\
-			 with over $8 billion in funded loans. for more information visit <a href="https://www.prosper.com/">Prosper.com</a>. <br><br> \
-			 Here I visualize the number of loans per state, the state with higher number of loans has a darker color.');
+			with over $8 billion in funded loans. for more information visit <a\
+			href="https://www.prosper.com/">Prosper.com</a>. <br><br> \
+			Here I visualize the number of loans per state, the state with higher number of loans\
+			has a darker color.');
 
 	var svg = d3.select('body')
-				.append('svg')
-					.attr('width', '100%'  )
-					.attr('height', '100%' )
-	var bounding = svg.node().getBoundingClientRect();
-	width = bounding.width;
-	height = bounding.height;
+		.append('svg')
+			.attr('width', width + 'px')
+			.attr('height', height + 'px');
 
 	var map    = svg.append('g').attr('class','map');
 	var legend = svg.append('g').attr('class','legend')
-								.attr('transform','translate('+(width * .6)+',0)');
+		.attr('transform','translate('+ legend_margin +',0)');
 
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-	//.node().getBoundingClientRect()
 	//  append count from states_borrower to states_geo
 	// also change the variable "id" [index] for sorting,
 	//	  the highest count value will take [1] and the lowest would take the highest index.
@@ -66,8 +63,8 @@ function main(error, states_geo, states_borrower)
 	}
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// call the two function from the two files  draw_map , and draw_legend
-	var color_scale = draw_map(map, mapWidth, height, states_geo);
-	var arc_objects  = draw_legend(legend, legendWdith, height, states_borrower);
+	var color_scale = draw_map(map, map_width, height, states_geo);
+	var arc_objects  = draw_legend(legend, states_borrower);
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 	/***************************************
@@ -76,13 +73,16 @@ function main(error, states_geo, states_borrower)
 	var total = 0.0, // used by animate() to sum up loans.
 		stop_exec_command = false, // a flag used to tell animate() to stop execution.
 		running_flag = false; // a flag used to figure wether animate() is running or not.
-	var loans_extent = d3.extent(states_borrower, function(d){ return +d.loans; }) //get maximum and minimum number of loans.
-	var time_ratio = d3.scale.linear().domain(loans_extent).range([0,2]); // convert loans to range [0-2](used by setTimeout()).
+	//get maximum and minimum number of loans.
+	var loans_extent = d3.extent(states_borrower, function(d){ return +d.loans; })
+	// convert loans to range [0-2](used by setTimeout()).
+	var time_ratio = d3.scale.linear().domain(loans_extent).range([0,2]);
 	function animate(id)
 	{
 		// the following  will be executed if the user pressed the skip button.
 		if (stop_exec_command == true )
 		{
+			skipButton.attr('class','skipButton hide');
 			running_flag = false;
 			stop_exec_command = false;
 			return;
@@ -130,6 +130,7 @@ function main(error, states_geo, states_borrower)
 		// call the function for all the states.
 		if (id == 49 ) // indicate the last element(state) .
 		{
+			skipButton.attr('class','skipButton hide');
 			running_flag = false;
 			map.select('path#path'+(id)).attr('class','states');
 		}
@@ -140,20 +141,20 @@ function main(error, states_geo, states_borrower)
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// MAKE BUTTONS [ PLAY & SKIP ]
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-	  var buttonsWidth = 650,
-	  	  buttonsHeight = 50;
-	  var buttons = svg.append('g')
-	  					.attr('class','buttons')
-						.attr('transform', 'translate(' + buttonsWidth + ',' + buttonsHeight +  ')');
+	var buttonsWidth = 650,
+		buttonsHeight = 50;
+	var buttons = svg.append('g')
+		.attr('class','buttons')
+		.attr('transform', 'translate(' + buttonsWidth + ',' + buttonsHeight +  ')');
 	//*****************************
 	// first button [ skip button ]
-	var skipButton = buttons.append('g').attr('class', 'skipButton');
+	var skipButton = buttons.append('g').attr('class', 'skipButton show');
 	skipButton.append("circle")
 		.attr("r", 30)
-	 	.attr("transform", "translate(" + 0 + "," + 0 + ")");
- 	skipButton.append("path")
-	 .attr("d", "M-22,-30l60,30l-60,30z")
-	 .attr("transform", "translate(" +  (-7) + "," + 0 + ") scale(.4)");
+		.attr("transform", "translate(" + 0 + "," + 0 + ")");
+	skipButton.append("path")
+		.attr("d", "M-22,-30l60,30l-60,30z")
+		.attr("transform", "translate(" +  (-7) + "," + 0 + ") scale(.4)");
 	skipButton.append("path")
 		.attr("d", "M-22,-30l60,30l-60,30z")
 		.attr("transform", "translate(" + 8 + "," + 0 + ") scale(.4)");
@@ -177,18 +178,18 @@ function main(error, states_geo, states_borrower)
 		.attr("r", 30)
 		.attr("transform", 'translate(' + 0 + ' , 0 )' );
 	playButton.append("path")
-	 	.attr("d", "M-22,-30l60,30l-60,30z")
-	 	.attr("transform", 'translate(' +  0 + ', 0 ) scale(.4)');
+		.attr("d", "M-22,-30l60,30l-60,30z")
+		.attr("transform", 'translate(' +  0 + ', 0 ) scale(.4)');
 	playButton.append('rect')
- 		.attr("transform", "translate(" + ( -30) + "," + (-30) + ")")
- 		.attr('width', 60)
- 		.attr('height', 60)
- 		.on("click", function() { reanimate() });
+		.attr("transform", "translate(" + ( -30) + "," + (-30) + ")")
+		.attr('width', 60)
+		.attr('height', 60)
+		.on("click", function() { reanimate() });
 	// update the tooltip.
 	 $('.playButton').tipsy({
- 		gravity: 'w',
- 		html: true,
- 		title: function(){return 'play'}
+		gravity: 'w',
+		html: true,
+		title: function(){return 'play'}
 	});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	//	function to call animate() for the first time,
@@ -208,13 +209,13 @@ function main(error, states_geo, states_borrower)
 				var loans = d.properties.loans;
 				return color_scale( loans );
 			});
-			// update the legend circle and it's text.
-			arc_objects[0].endAngle(twoPi * ( 1 - ( nan_count / total_loans_sum ) )  );
+			// restore the legend circle and it's text.
+			arc_objects[0].endAngle(twoPi);
 			legend.select('path.total_arc')
 				.attr('d',arc_objects[0]);
 			var text = legend.select('.total_text');
-			text.select('#percent').text(((1 - nan_count / total_loans_sum)*100).toFixed(2) + '%' );
-			text.select('#loans').text( (total_loans_sum - nan_count).toLocaleString()+' Loans' );
+			text.select('#percent').text('100%' );
+			text.select('#loans').text( (total_loans_sum).toLocaleString()+' Loans' );
 		}
 		else // first time animation or user pressed play button
 		{
@@ -224,15 +225,16 @@ function main(error, states_geo, states_borrower)
 				if ( running_flag == false ) // wait until the animate() function stop working.
 				{
 					// clear all colors in the map first.
-					map.selectAll('path.states, path.add_map_dec').attr('class', 'states').style('fill','white');
+					map.selectAll('path.states, path.add_map_dec')
+						.attr('class', 'states').style('fill','white');
 					total = 0; // clear the sum of loans.
 					// start animation
+					skipButton.attr('class','skipButton show');
 					running_flag = true;
 					animate(0);
 					clearInterval(interval); // stop setInterval command
 				}
 			}, 500);
-
 		}
 	}
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
