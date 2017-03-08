@@ -56,6 +56,7 @@ svg
 
 /****************************/
 /* draw_map*/
+
 .map .states
 {
 	fill:rgb(213,222,217);
@@ -70,7 +71,10 @@ svg
 	fill-opacity: .7;
 	background-color: black;
 }
-
+.map .states.hide
+{
+	fill:blue;
+}
 /***************************\
 /* draw_legen() */
 .legend .arcs .total_arc
@@ -110,4 +114,39 @@ svg
 {
 	stroke-width: 3;
 	stroke:#ff0000;
+}
+/******************************/
+/*  legend   */
+.legend .buttons .typeButtons .rect,
+.legend .buttons .percentageButtons .rect
+{
+	fill: white;
+	stroke: black;
+	stroke-width: 1px;
+	pointer-events: all;
+	cursor: pointer;
+}
+.legend .buttons .typeButtons .rect.clicked,
+.legend .buttons .percentageButtons .rect.clicked
+{
+	fill: black;
+}
+.legend .buttons .typeButtons text,
+.legend .buttons .percentageButtons text
+{
+	text-align: left;
+	fill: black;
+	font: 16px sans-serif;
+}
+.legend line
+{
+	stroke:#C0C0C0;
+	stroke-width:2;
+}
+.legend .state_info,
+.legend .summary
+{
+	text-align: left;
+	fill: black;
+	font: 16px sans-serif;
 }

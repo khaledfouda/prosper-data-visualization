@@ -1,7 +1,9 @@
 # visualizing states of prosper.com borrowers  
 
-### Gist
-the visualization can be viewed on gist from this link : http://bl.ocks.org/bekaa/raw/8e4ca9f935443ba6ddeb2ad5df4402e6/  
+### Visualization, gist, and github links
+the project files can be viewed on gist from each of these links : [gist.github](https://gist.github.com/bekaa/8e4ca9f935443ba6ddeb2ad5df4402e6) or [bl.ocks.org](http://bl.ocks.org/bekaa/8e4ca9f935443ba6ddeb2ad5df4402e6/)  
+And the Visualization from this link : [bl.ocks.org-raw](http://bl.ocks.org/bekaa/raw/8e4ca9f935443ba6ddeb2ad5df4402e6/).  
+And for sure the github repository https://github.com/bekaa/prosper-data-visualization .  
 
 ------------
 
@@ -49,3 +51,5 @@ http://codepen.io/anon/pen/NqWQNg                        ----  arc example
 http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----  us-states map example  
 
 -------------------------
+
+https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population
