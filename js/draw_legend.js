@@ -1,6 +1,7 @@
 "use strict";
 
-var stats = { 'population':{
+var stats = {
+'population':{
 	'50':{'num_of_states':9,'minimum':10146788,'sum_of_loans':56190,'sum_of_population':165145915 },
 	'70':{'num_of_states':17,'minimum':6633053,'sum_of_loans':77546,'sum_of_population':226745590 },
 	'90':{'num_of_states':31,'minimum':3051217,'sum_of_loans':99568,'sum_of_population':292416689 },
@@ -30,24 +31,28 @@ function draw_legend()
 	//      ***DRAW BORDERS***
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	// horizontal top
-	legend.append('line').attr({ x1:"-30", y1:"5", x2:"600", y2:"5"});
+	legend.append('line').attr({ x1:"-30", y1:"5", x2:"700", y2:"5"});
 	// horizontal bottom
-	legend.append('line').attr({ x1:"-30", y1:"300", x2:"600", y2:"300"});
+	legend.append('line').attr({ x1:"-30", y1:"300", x2:"700", y2:"300"});
 	// vertical left
 	legend.append('line').attr({ x1:"-30", y1:"5", x2:"-30", y2:"300"});
 	// vertical right
-	legend.append('line').attr({ x1:"600", y1:"5", x2:"600", y2:"300"});
+	legend.append('line').attr({ x1:"700", y1:"5", x2:"700", y2:"300"});
 	// vertical middle left
-	legend.append('line').attr({ x1:"160", y1:"5", x2:"160", y2:"300"});
+	legend.append('line').attr({ x1:"260", y1:"5", x2:"260", y2:"300"});
 	// vertical middle right
-	legend.append('line').attr({ x1:"340", y1:"5", x2:"340", y2:"300"});
+	legend.append('line').attr({ x1:"470", y1:"5", x2:"470", y2:"300"});
 	// horizontal to split buttons
-	legend.append('line').attr({ x1:"340", y1:"140", x2:"600", y2:"140"});
+	legend.append('line').attr({ x1:"470", y1:"140", x2:"700", y2:"140"});
+	// horizontal to split summary1
+	legend.append('line').attr({ x1:"-30", y1:"50", x2:"260", y2:"50"});
+	// horizontal to split summary2
+	legend.append('line').attr({ x1:"-30", y1:"170", x2:"260", y2:"170"});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// *** draw buttons [[ right side ]] ***
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	var buttons = legend.append('g').attr('class','buttons')
-		.attr('transform',"translate(" + 400 + "," + 15 + ") ");
+		.attr('transform',"translate(" + 540 + "," + 15 + ") ");
 	// buttons is divied to [ type buttons [upper], percentage Buttons [lower] ].
 	var typeButtons = buttons.append('g').attr('class','typeButtons')
 		.attr('transform',"translate(" + 0 + "," + 0 + ") ");
@@ -127,28 +132,28 @@ function draw_legend()
 	// *** draw state info [[ middle ]] ***
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	var state_info = legend.append('g').attr('class','state_info')
-		.attr('transform',"translate(" + 180 + "," + 15 + ") ")
+		.attr('transform',"translate(" + 275 + "," + 15 + ") ")
 		.append('text');
 	state_info.append('tspan')
 		.attr('id','name')
-		.attr({ 'x':12, 'dy':20 })
+		.attr({ 'x':30, 'dy':20 })
 		.text('State-name');
 	state_info.append('tspan')
 		.attr('id','loans')
 		.attr({ 'x':0, 'dy':40 })
-		.text('Loans : '+1556);
+		.text('Loans : ');
 	state_info.append('tspan')
 		.attr('id','percentage')
 		.attr({ 'x':0, 'dy':30 })
-		.text('percentage: '+.78);
+		.text('percentage: ');
 	state_info.append('tspan')
 		.attr('id','population')
 		.attr({ 'x':0, 'dy':30 })
-		.text('Population: '+2222222);
+		.text('Population: ');
 	state_info.append('tspan')
 		.attr('id','score')
 		.attr({ 'x':0, 'dy':30 })
-		.text('Score: '+.8);
+		.text('Score: ');
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// *** draw summary part [[ left ]] ***
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
@@ -156,29 +161,32 @@ function draw_legend()
 		.attr('transform',"translate(" + -20 + "," + 15 + ") ")
 		.append('text');
 	summary.append('tspan')
+		.attr({ 'x':90, 'dy':15 })
+		.text('summary');
+	summary.append('tspan')
 		.attr('id','states')
-		.attr({ 'x':0, 'dy':20 })
-		.text("number of states: ",50);
+		.attr({ 'x':0, 'dy':50 })
+		.text("number of states: " + stats.loans['100']['num_of_states'].toLocaleString());
 	summary.append('tspan')
 		.attr('id','loans')
-		.attr({ 'x':0, 'dy':40 })
-		.text('sum of loans: '+1556);
+		.attr({ 'x':0, 'dy':30 })
+		.text('sum of loans: ' + stats.loans['100']['sum_of_loans'].toLocaleString());
 	summary.append('tspan')
 		.attr('id','population')
 		.attr({ 'x':0, 'dy':30 })
-		.text('sum of population : '+1556);
+		.text('sum of population : ' + stats.loans['100']['sum_of_population'].toLocaleString());
 	summary.append('tspan')
 		.attr('id','total_states')
-		.attr({ 'x':0, 'dy':30 })
-		.text('total number of states: '+ 50);
+		.attr({ 'x':0, 'dy':70 })
+		.text('total number of states: ' + stats.loans['100']['num_of_states'].toLocaleString());
 	summary.append('tspan')
 		.attr('id','total_loans')
 		.attr({ 'x':0, 'dy':30 })
-		.text('total number of loans: '+.8);
+		.text('total number of loans: ' + stats.loans['100']['sum_of_loans'].toLocaleString());
 	summary.append('tspan')
 		.attr('id','total_population')
 		.attr({ 'x':0, 'dy':30 })
-		.text('total population: '+.8);
+		.text('total population: ' + stats.loans['100']['sum_of_population'].toLocaleString());
 
 	//*************************************************
 };
@@ -206,6 +214,31 @@ function percentageButton_clicked(percent)
 }
 function update_summary(type, percent)
 {
-	summary = d3.select('.legend .summary text');
-
+	var summary = d3.select('.legend .summary text');
+	summary.select('#states')
+		.text("number of states: " + stats[type][percent]['num_of_states']);
+	summary.select('#loans')
+		.text('sum of loans: ' + stats[type][percent]['sum_of_loans'].toLocaleString());
+	summary.select('#population')
+		.text('sum of population : ' + stats[type][percent]['sum_of_population'].toLocaleString());
+	summary.select('#total_states')
+		.text('total number of states: ' + stats[type][percent]['num_of_states']);
+	summary.select('#total_loans')
+		.text('total number of loans: ' + stats[type][percent]['sum_of_loans'].toLocaleString());
+	summary.select('#total_population')
+		.text('total population: ' + stats[type][percent]['sum_of_population'].toLocaleString());
+}
+function update_state_info(state)
+{
+	var state_info = d3.select('.legend .state_info text')
+	state_info.select('#name')
+		.text(state.name);
+	state_info.select('#loans')
+		.text('Loans : ' + state.loans.toLocaleString());
+	state_info.select('#percentage')
+		.text('percentage: ' + (state.loans / sum_of_loans * 100).toFixed(2)+"%" );
+	state_info.select('#population')
+		.text('Population: ' + state.population.toLocaleString());
+	state_info.select('#score')
+		.text('Score: ' + state.score);
 }

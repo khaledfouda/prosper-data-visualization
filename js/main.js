@@ -76,6 +76,7 @@ function main(error, geo, csv)
 	draw_map('population');
 	show_tooltip();
 	draw_legend();
+	typeButton_clicked('loans');
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 }

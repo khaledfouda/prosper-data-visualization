@@ -132,21 +132,16 @@ svg
 	fill: black;
 }
 .legend .buttons .typeButtons text,
-.legend .buttons .percentageButtons text
-{
-	text-align: left;
-	fill: black;
-	font: 16px sans-serif;
-}
-.legend line
-{
-	stroke:#C0C0C0;
-	stroke-width:2;
-}
+.legend .buttons .percentageButtons text,
 .legend .state_info,
 .legend .summary
 {
 	text-align: left;
 	fill: black;
-	font: 16px sans-serif;
+	font: 18px sans-serif;
+}
+.legend line
+{
+	stroke:#C0C0C0;
+	stroke-width:2;
 }

@@ -42,6 +42,7 @@ function draw_map(variable)
 			.attr('d',path)
 			.attr('class','states show')
 			.attr('id', function(d){ return 'path'+ d.id; })
+			.on('mouseover', function(d){ update_state_info(d.properties); })//defined in legend.js
 			.style('fill',function(d)
 			{
 				var loans = d.properties.loans,
@@ -75,7 +76,7 @@ function show_tooltip()
 			else if(type == 'score')
 				var value = score;
 			else return;
-			return state+"  ["+type+": "+value.toLocaleString()+" ] ";
+			return state+"  [ "+type+": "+value.toLocaleString()+" ] ";
 		}
 	});
 }
