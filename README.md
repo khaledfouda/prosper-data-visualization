@@ -9,18 +9,20 @@ And for sure the github repository https://github.com/bekaa/prosper-data-visuali
 
 ### Summary  
 - Prosper is America’s first marketplace lending platform, with over $8 billion in funded loans. for more information visit [Prosper.com](https://www.prosper.com/).     
-- Based on the published loan data, I extracted the states with the number of loans made of each state. [data/borrower_states.csv].  
-- And as shown, the highest number of loans goes to california (14,717 loans), after it comes texas/newyork/florida (around 6,700 loans).  
-- Most of the states have number of loans less than 1,000 .  
+- Based on the published loan data, I extracted the states with the number of loans made of each state. [data/borrower_states.csv].
+- Company should pay attention to states with high number of loans, but what if these states already have very high number of population!, for this reason I created a new variable called "score" to give each state a score this score is computed by summing (loans/population) and (loans/total_loans) per state then map the values to a value between 0 and 1.  
+- Thus states with higher score means that these states have both high number of loans and high number of population which make them worth paying attention to.  
+- And as map shows, 3 states have score higher than 0.7 which are California, Illinois, and Georgia.
+- And 18 states have score higher than 0.5.  
 
 --------
 
 ### Design
-- I used the geographic data of united states [data/us-states-geo.json] to draw a map,  
-- Used color palette to give states with higher number of loans a darker color and vice versa,   
-- Added two arcs one for the total number of loans and it's percentage, and the other for each state.   
-- The length of the state's arc is proportional to the max number of loans in a state (CA).  
-- Also I included animation to show states one by one sorted by number of loans, and two buttons one for skipping and the other for replaying the animation.    
+- As the data describes the states of America so a map would be the best way to show it.  
+- Using the geographic data: [data/us-states-geo.json] I draw the map.  
+- Also I added color palette to show the difference in values between different states.  
+- And an interactive table of information, filters and summary, which leaves to the user the freedom to explore the visualization and get his own conclusions.  
+- most of the color used are black and white except for the color palette I used colors from black, blues and white, as you can easily notice that black is higher than blue and blue is higher than white.  
 
 -----------
 
@@ -41,15 +43,11 @@ I felt that the red font isn't bad, I don't know if I'm right or wrong.
 #### Resources
 
 The loans dataset https://s3.amazonaws.com/udacity-hosted-downloads/ud651/prosperLoanData.csv .  
+population data are from this wikipedia page.  https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population
 
 These projects helped me alot,
-
-http://bl.ocks.org/ilyabo/1373263                        ----  tipsy example  
-https://github.com/jaz303/tipsy                          ----  tipsy library  
-https://bl.ocks.org/mbostock/6408735                     ----  buttons example  
-http://codepen.io/anon/pen/NqWQNg                        ----  arc example  
-http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----  us-states map example  
+- tipsy example http://bl.ocks.org/ilyabo/1373263
+- tipsy library https://github.com/jaz303/tipsy                   
+- us-states map examplehttp://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----    
 
 -------------------------
-
-https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population
