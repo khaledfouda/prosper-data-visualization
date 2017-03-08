@@ -1,51 +1,51 @@
-state,loans
-California,14717
-Texas,6842
-New York,6729
-Florida,6720
-Illinois,5921
-Georgia,5008
-Ohio,4197
-Michigan,3593
-Washington,3430
-Virginia,3278
-New Jersey,3097
-North Carolina,3084
-Pennsylvania,2972
-Maryland,2821
-Missouri,2615
-Minnesota,2318
-Massachusetts,2242
-Colorado,2210
-Indiana,2078
-Arizona,1901
-Wisconsin,1842
-Oregon,1817
-Tennessee,1737
-Alabama,1679
-Connecticut,1627
-South Carolina,1122
-Nevada,1090
-Kansas,1062
-Kentucky,983
-Oklahoma,971
-Louisiana,954
-Utah,877
-Arkansas,855
-Mississippi,787
-Nebraska,674
-Idaho,599
-New Hampshire,551
-New Mexico,472
-Rhode Island,435
-Hawaii,409
-West Virginia,391
-Montana,330
-Delaware,300
-Vermont,207
-Alaska,200
-South Dakota,189
-Iowa,186
-Wyoming,150
-Maine,101
-North Dakota,52
+state,population,loans,score
+California,39250017,14717,1.0
+Texas,27862596,6842,0.54768
+Florida,20612439,6720,0.63648
+New York,19745289,6729,0.65399
+Pennsylvania,12802503,2972,0.38368
+Illinois,12801539,5921,0.76444
+Ohio,11614373,4197,0.5808
+Georgia,10310371,5008,0.75639
+North Carolina,10146788,3084,0.4714
+Michigan,9928301,3593,0.55826
+New Jersey,8944469,3097,0.52106
+Virginia,8411808,3278,0.57848
+Washington,7288000,3430,0.67835
+Arizona,6931071,1901,0.39157
+Massachusetts,6811779,2242,0.46839
+Tennessee,6651194,1737,0.37004
+Indiana,6633053,2078,0.44368
+Missouri,6093000,2615,0.59893
+Maryland,6016447,2821,0.65295
+Wisconsin,5778708,1842,0.44099
+Colorado,5540545,2210,0.54819
+Minnesota,5519952,2318,0.57679
+South Carolina,4961119,1122,0.30579
+Alabama,4863300,1679,0.46551
+Louisiana,4681666,954,0.27334
+Kentucky,4436974,983,0.2951
+Oregon,4093465,1817,0.58541
+Oklahoma,3923561,971,0.32478
+Connecticut,3576452,1627,0.59095
+Iowa,3134693,186,0.07607
+Utah,3051217,877,0.36758
+Mississippi,2988726,787,0.33613
+Arkansas,2988248,855,0.36522
+Nevada,2940058,1090,0.47255
+Kansas,2907289,1062,0.46514
+New Mexico,2081015,472,0.28163
+Nebraska,1907116,674,0.43647
+West Virginia,1831102,391,0.26309
+Idaho,1683140,599,0.43646
+Hawaii,1428557,409,0.34833
+New Hampshire,1334795,551,0.50075
+Maine,1331479,101,0.09201
+Rhode Island,1056426,435,0.4951
+Montana,1042520,330,0.38043
+Delaware,952065,300,0.37761
+South Dakota,865454,189,0.26098
+North Dakota,757952,52,0.0817
+Alaska,741894,200,0.32089
+Vermont,624594,207,0.393
+Wyoming,585501,150,0.30341
