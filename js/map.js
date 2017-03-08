@@ -1,5 +1,5 @@
 "use strict";
-var type;
+var type; // to share type between the two functions here.
 function draw_map(variable)
 {
 	type = variable;

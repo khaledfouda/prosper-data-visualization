@@ -1,5 +1,7 @@
 "use strict";
 
+// a dictionary holds some statistics about the data, these statistics are generated based on
+//   on the data linked in README file.
 var stats = {
 'population':{
 	'50':{'num_of_states':9,'minimum':10146788,'sum_of_loans':56190,'sum_of_population':165145915 },
@@ -71,7 +73,7 @@ function draw_legend()
 			.attr('height', 15)
 			.on("click", function(d)
 			{
-				typeButton_clicked(d, this)
+				typeButton_clicked(d);
 			})
 			.each(function(d)
 			{
@@ -126,7 +128,7 @@ function draw_legend()
 				else if(d == 90) var y = 90 + 12;
 				else if(d == 100) var y = 120 + 12;
 				d3.select(this).attr('y',y).text(d+'%');
-			})
+			});
 	percentageButtons.append('text').text('Show ...% of the data :').attr({'x':-50, 'y':15 });
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// *** draw state info [[ middle ]] ***
@@ -158,8 +160,7 @@ function draw_legend()
 	// *** draw summary part [[ left ]] ***
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	var summary = legend.append('g').attr('class','summary')
-		.attr('transform',"translate(" + -20 + "," + 15 + ") ")
-		.append('text');
+		.attr('transform',"translate(" + -20 + "," + 15 + ") ").append('text');
 	summary.append('tspan')
 		.attr({ 'x':90, 'dy':15 })
 		.text('summary');
@@ -262,7 +263,7 @@ function update_summary(type, percent)
 }
 function update_state_info(state)
 {
-	var state_info = d3.select('.legend .state_info text')
+	var state_info = d3.select('.legend .state_info text');
 	state_info.select('#name')
 		.text(state.name);
 	state_info.select('#loans')

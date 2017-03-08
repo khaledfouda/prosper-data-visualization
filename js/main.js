@@ -1,21 +1,21 @@
 "use strict";
+
+// initialize some public variables shared between js scripts.
+var margin = 20,
+map_width = 900,
+legend_margin = map_width + 50,
+width = 1700,
+height = 600,
+sum_of_loans = 108422.0,
+map,
+legend,
+states_geo,
+states_csv;
+
 d3.queue()
 	.defer(d3.json,'data/us-states-geo.json')
-	.defer(d3.csv,'data/annualIncome2.csv')
+	.defer(d3.csv,'data/borrower_states.csv')
 	.await(main);
-
-var margin = 20,
-	map_width = 900,
-	legend_margin = map_width + 50,
-	width = 1700,
-	height = 600,
-	twoPi = 2.0 * Math.PI,
-	sum_of_loans = 108422.0,
-	sum_of_populations = 322464620,
-	map,
-	legend,
-	states_geo,
-	states_csv;
 //*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 function main(error, geo, csv)
 {
@@ -82,6 +82,7 @@ function main(error, geo, csv)
 	draw_map('population');
 	show_tooltip();
 	draw_legend();
+	// initialize visualization as it's click on type:loans and 100% percentage.
 	typeButton_clicked('loans');
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 

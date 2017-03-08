@@ -28,35 +28,7 @@ svg
 	margin-left: 0px;
 }
 /****************************/
-/* buttons */
-.buttons .skipButton.show:hover path,
-.buttons .playButton:hover path
-{
-	fill: red;
-}
-.buttons .skipButton.show,
-.buttons .playButton
-{
-	fill: white;
-	stroke: black;
-	stroke-width: 3px;
-}
-.skipButton.show rect,
-.playButton rect
-{
-	fill: none;
-	pointer-events: all;
-	cursor: pointer;
-	opacity: 0;
-}
-.buttons .skipButton.hide
-{
-	fill: none;
-}
-
-/****************************/
 /* draw_map*/
-
 .map .states
 {
 	fill:rgb(213,222,217);
@@ -64,56 +36,12 @@ svg
 	stroke: #b95656;
 }
 /* On mouse hover, lighten state color */
-.map .states:hover
+.map .states.show:hover
 {
 	stroke-width: 1;
 	stroke:#ff0000;
 	fill-opacity: .7;
 	background-color: black;
-}
-.map .states.hide
-{
-	fill:blue;
-}
-/***************************\
-/* draw_legen() */
-.legend .arcs .total_arc
-{
-	border: 1px solid;
-	fill: #8FAAE5;
-	transform-origin: left;
-}
-.legend .arcs .state_arc
-{
-	border: 1px solid;
-	fill: #c7d9ff;
-	transform-origin: right;
-}
-.legend .arcs .total_text
-{
-	text-align: justify;
-	font-size: 170%;
-	font-weight: bold;
-	fill: red;
-}
-.legend .arcs .state_text
-{
-	text-align: center;
-	font-size: 150%;
-	font-weight: 700;
-	fill: #ff3b3b;
-}
-.legend .notes
-{
-	text-align: left;
-	font: 18px sans-serif;
-}
-/******************************/
-/* animate() */
-.map .add_map_dec
-{
-	stroke-width: 3;
-	stroke:#ff0000;
 }
 /******************************/
 /*  legend   */
@@ -134,7 +62,8 @@ svg
 .legend .buttons .typeButtons text,
 .legend .buttons .percentageButtons text,
 .legend .state_info,
-.legend .summary
+.legend .summary,
+.legend .notes
 {
 	text-align: left;
 	fill: black;
