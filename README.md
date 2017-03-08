@@ -46,8 +46,8 @@ The loans dataset https://s3.amazonaws.com/udacity-hosted-downloads/ud651/prospe
 population data are from this wikipedia page.  https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population
 
 These projects helped me alot,
-- tipsy example http://bl.ocks.org/ilyabo/1373263
-- tipsy library https://github.com/jaz303/tipsy                   
-- us-states map examplehttp://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922  ----    
+- tipsy example http://bl.ocks.org/ilyabo/1373263  
+- tipsy library https://github.com/jaz303/tipsy   
+- us-states map example http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
 
 -------------------------
