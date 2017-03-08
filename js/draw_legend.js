@@ -187,8 +187,40 @@ function draw_legend()
 		.attr('id','total_population')
 		.attr({ 'x':0, 'dy':30 })
 		.text('total population: ' + stats.loans['100']['sum_of_population'].toLocaleString());
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	// *** draw notes [ bottom ] ****
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	var notes = legend.append('g').attr('class','notes')
+		.attr('transform', 'translate( -20, 310)').append('text');
 
-	//*************************************************
+	notes.append('tspan')
+		.attr({ 'x':0, 'dy':20 })
+		.text('* Score is evaluated in a function of two variables( loans/population and loans ),');
+	notes.append('tspan')
+		.attr({ 'x':20, 'dy':30 })
+		.text('to give weights to states, for more info check README file in the project repo.');
+	notes.append('tspan')
+		.attr({ 'x':0, 'dy':30 })
+		.text('* Each state has a score between 0 and 1.');
+	notes.append('tspan')
+		.attr({ 'x':0, 'dy':30 })
+		.text('* Percentage is the number of loans per state divided by total sum of loans.');
+	notes.append('tspan')
+		.attr({ 'x':0, 'dy':30 })
+		.text('* show ..% is related to the type choosed, examples: ');
+	notes.append('tspan')
+		.attr({ 'x':20, 'dy':30 })
+		.text('- type:loans and 50% will show the states having 50% of total loans.');
+	notes.append('tspan')
+		.attr({ 'x':20, 'dy':30 })
+		.text('- type:population and 70% will show the states having 70% of total population.');
+	notes.append('tspan')
+		.attr({ 'x':20, 'dy':30 })
+		.text('- type:score and 90% will show the states having score equal or higher than .9.');
+	notes.append('tspan')
+		.attr({ 'x':20, 'dy':30 })
+		.text('- type:any and 100% will show all states.');
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 };
 function typeButton_clicked(type)
 {

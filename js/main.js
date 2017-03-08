@@ -28,11 +28,17 @@ function main(error, geo, csv)
 		.html('Prosper is America’s first marketplace lending platform,\
 			with over $8 billion in funded loans. for more information visit <a\
 			href="https://www.prosper.com/">Prosper.com</a>. <br><br> \
-			Here I visualize the number of loans per state, the state with higher number of loans\
-			has a darker color.');
+			Here I visualize the number of loans and population per state,\
+			the state with higher value has a darker color. for more information please\
+			 check <a href="\
+			https://github.com/bekaa/prosper-data-visualization/blob/master/README.md"\
+			 target="_blank">README</a> file or project\'s github <a href=\
+			 "https://github.com/bekaa/prosper-data-visualization" target="_blank"> \
+			repository</a>.');
 
 	var svg = d3.select('body')
 		.append('svg')
+			.attr('xmlns:xlink', "http://www.w3.org/1999/xlink")
 			.attr('width', width + 'px')
 			.attr('height', height + 'px');
 
