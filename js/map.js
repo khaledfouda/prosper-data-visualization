@@ -30,7 +30,6 @@ function draw_map(variable)
 		return scale_color(scale_loans(d))
 	}
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-	// ******* Magic ********
 	// draw states based on data.
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// delete the map incase if it exists.
@@ -66,17 +65,8 @@ function show_tooltip()
 		{
 			var d = this.__data__,
 				state = d.properties.name,
-				loans = d.properties.loans,
-				population = d.properties.population,
-				score = d.properties.score;
-			if(type == 'loans')
-				var value = loans;
-			else if(type == 'population')
-				var value = population;
-			else if(type == 'score')
-				var value = score;
-			else return;
-			return state+"  [ "+type+": "+value.toLocaleString()+" ] ";
+				value = d.properties[type].toLocaleString();
+			return state + "  [ " + type + ": " + value + " ] ";
 		}
 	});
 }

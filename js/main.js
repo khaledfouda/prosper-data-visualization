@@ -1,5 +1,4 @@
 "use strict";
-
 // initialize some public variables shared between js scripts.
 var margin = 20,
 map_width = 900,
@@ -11,7 +10,7 @@ map,
 legend,
 states_geo,
 states_csv;
-
+//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 d3.queue()
 	.defer(d3.json,'data/us-states-geo.json')
 	.defer(d3.csv,'data/borrower_states.csv')
@@ -41,9 +40,8 @@ function main(error, geo, csv)
 			.attr('xmlns:xlink', "http://www.w3.org/1999/xlink")
 			.attr('width', width + 'px')
 			.attr('height', height + 'px');
-
-	 map    = svg.append('g').attr('class','map');
-	 legend = svg.append('g').attr('class','legend')
+	map    = svg.append('g').attr('class','map');
+	legend = svg.append('g').attr('class','legend')
 		.attr('transform','translate('+ legend_margin +',0)');
 
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-

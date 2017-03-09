@@ -1,5 +1,4 @@
 "use strict";
-
 // a dictionary holds some statistics about the data, these statistics are generated based on
 //   on the data linked in README file.
 var stats = {
@@ -249,12 +248,6 @@ function update_summary(type, percent)
 		.text('sum of loans: ' + stats[type][percent]['sum_of_loans'].toLocaleString());
 	summary.select('#population')
 		.text('sum of population : ' + stats[type][percent]['sum_of_population'].toLocaleString());
-	summary.select('#total_states')
-		.text('total number of states: ' + stats[type][percent]['num_of_states']);
-	summary.select('#total_loans')
-		.text('total number of loans: ' + stats[type][percent]['sum_of_loans'].toLocaleString());
-	summary.select('#total_population')
-		.text('total population: ' + stats[type][percent]['sum_of_population'].toLocaleString());
 }
 function update_state_info(state)
 {
