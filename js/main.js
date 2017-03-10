@@ -96,30 +96,30 @@ function main(error, geo, csv)
 	footer.append('line').attr({ x1:"30", y1:"0", x2:"1500", y2:"0"});
 
 	footer.append('text').attr({'x':30,'y':50 })
-		.text('For project files and extra details please check')
+		.text('For project files and extra details please check');
 
 	footer.append('a').attr('xlink:href',
 		"https://github.com/bekaa/prosper-data-visualization/blob/master/README.md")
-		.append('text').attr({'x':420,'y':50 }).text(' README')
+		.append('text').attr({'x':420,'y':50 }).text(' README');
 
 	footer.append('text').attr({'x':510,'y':50 })
-		.text('file or project\'s github')
+		.text('file or project\'s github');
 
 	footer.append('a').attr('xlink:href',"https://github.com/bekaa/prosper-data-visualization/")
-		.append('text').attr({'x':690,'y':50 }).text(' repository.')
+		.append('text').attr({'x':690,'y':50 }).text(' repository.');
 
-	var contact_info = footer.append('text').attr({'x':30,'y':80 })
+	var contact_info = footer.append('text').attr({'x':30,'y':80 });
 	contact_info.append('tspan')
-		.text('Posted by: Khaled Salah')
-	contact_info.append('tspan')
-		.attr({'x':30,'dy':30})
-		.text('Email address: scikdeg@gmail.com')
+		.text('Posted by: Khaled Salah');
 	contact_info.append('tspan')
 		.attr({'x':30,'dy':30})
-		.text('Github: https://github.com/bekaa')
+		.text('Email address: scikdeg@gmail.com');
 	contact_info.append('tspan')
 		.attr({'x':30,'dy':30})
-		.text('linkedin: https://www.linkedin.com/in/bekaaa')
+		.text('Github: https://github.com/bekaa');
+	contact_info.append('tspan')
+		.attr({'x':30,'dy':30})
+		.text('linkedin: https://www.linkedin.com/in/bekaaa');
 
 	footer.append('line').attr({ x1:"30", y1:"200", x2:"1500", y2:"200"});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
