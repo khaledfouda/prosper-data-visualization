@@ -53,7 +53,7 @@ function draw_legend()
 	var typeButtons = buttons.append('g').attr('class','typeButtons')
 		.attr('transform',"translate(" + 0 + "," + 0 + ") ");
 	var percentageButtons = buttons.append('g').attr('class','percentageButtons')
-		.attr('transform',"translate(" + 0 + "," + 135 + ") ");
+		.attr('transform',"translate(" + 0 + "," + 145 + ") ");
 
 	var types = ['loans', 'population', 'score'];
 	var percents = [ 50, 70, 90, 100 ];
@@ -113,7 +113,7 @@ function draw_legend()
 	percentageButtons.selectAll('text')
 		.data(percents).enter()
 		.append('text')
-			.attr('class','text')
+			.attr('id','info')
 			.attr('x',0)
 			.each(function(d)
 			{
@@ -123,7 +123,10 @@ function draw_legend()
 				else if(d == 100) var y = 120 + 12;
 				d3.select(this).attr('y',y).text(d+'%');
 			});
-	percentageButtons.append('text').text('Show ...% of the data :').attr({'x':-50, 'y':15 });
+	var buttons_title = percentageButtons.append('text').attr({'x':-60, 'y':0, 'id':'title'});
+	buttons_title.append('tspan').text('Show the states').attr('id','t1');
+	buttons_title.append('tspan').text('having x% of the data :')
+		.attr({'x':-50, 'dy':20, 'id':'t2'});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	// *** draw state info [[ middle ]] ***
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
@@ -183,50 +186,47 @@ function draw_legend()
 		.attr({ 'x':0, 'dy':30 })
 		.text('total population: ' + stats.loans['100']['sum_of_population'].toLocaleString());
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-	// *** draw notes [ bottom ] ****
+	// *** write notes [ bottom ] ****
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-	var notes = legend.append('g').attr('class','notes')
-		.attr('transform', 'translate( -20, 310)').append('text');
-
-	notes.append('tspan')
-		.attr({ 'x':0, 'dy':20 })
-		.text('* Score is evaluated in a function of two variables( loans/population and loans ),');
-	notes.append('tspan')
-		.attr({ 'x':20, 'dy':30 })
-		.text('to give weights to states, for more info check README file in the project repo.');
-	notes.append('tspan')
-		.attr({ 'x':0, 'dy':30 })
-		.text('* Each state has a score between 0 and 1.');
-	notes.append('tspan')
-		.attr({ 'x':0, 'dy':30 })
-		.text('* Percentage is the number of loans per state divided by total sum of loans.');
-	notes.append('tspan')
-		.attr({ 'x':0, 'dy':30 })
-		.text('* show ..% is related to the type choosed, examples: ');
-	notes.append('tspan')
-		.attr({ 'x':20, 'dy':30 })
-		.text('- type:loans and 50% will show the states having 50% of total loans.');
-	notes.append('tspan')
-		.attr({ 'x':20, 'dy':30 })
-		.text('- type:population and 70% will show the states having 70% of total population.');
-	notes.append('tspan')
-		.attr({ 'x':20, 'dy':30 })
-		.text('- type:score and 90% will show the states having score equal or higher than .9.');
-	notes.append('tspan')
-		.attr({ 'x':20, 'dy':30 })
-		.text('- type:any and 100% will show all states.');
+	legend.append('g').attr('class','notes')
+		.attr('transform', 'translate( -20, 340)')
+		.append('text')
+			.text('* Percentage is the number of loans per state divided by total sum of loans.');
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 };
 function typeButton_clicked(type)
 {
-	d3.select('.typeButtons .rect.clicked').attr('class','rect');
-	d3.select('.typeButtons .rect#'+type).attr('class','rect clicked');
+	// un-check other buttons
+	d3.select('.legend .typeButtons .rect.clicked').attr('class','rect');
+	// check this button
+	d3.select('.legend .typeButtons .rect#'+type).attr('class','rect clicked');
+	// change percentage button to "100%" as defualt.
 	percentageButton_clicked("100");
+	// change precentage buttons' title and info based on the type choosed.
+	var buttons_title = d3.select('.legend .percentageButtons text#title');
+	buttons_title.select('#t1').text('Show the states');
+	if (type == 'score')
+	{
+		buttons_title.select('#t2').text('having score above ...' );
+		d3.selectAll('.legend .percentageButtons text#info').each(function(d)
+		{
+			if( d == 100 )
+				d3.select(this).text(0);
+			else
+				d3.select(this).text(d/100.0);
+		});
+	}
+	else
+	{
+		buttons_title.select('#t2').text('having x% of '+type+":");
+		d3.selectAll('.legend .percentageButtons text#info')
+		.each(function(d){ d3.select(this).text(d+"%"); });
+	}
 }
 function percentageButton_clicked(percent)
 {
-	d3.select('.percentageButtons .rect.clicked').attr('class','rect');
-	d3.select('.percentageButtons .rect#b'+percent ).attr('class','rect clicked');
+	d3.select('.legend .percentageButtons .rect.clicked').attr('class','rect');
+	d3.select('.legend .percentageButtons .rect#b'+percent ).attr('class','rect clicked');
 
 	var type = d3.select('.legend .typeButtons .rect.clicked')[0][0].__data__;
 

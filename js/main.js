@@ -5,6 +5,7 @@ map_width = 900,
 legend_margin = map_width + 50,
 width = 1700,
 height = 600,
+footer_height = 250,
 sum_of_loans = 108422.0,
 map,
 legend,
@@ -25,24 +26,28 @@ function main(error, geo, csv)
 	// add some text below the title.
 	d3.select('body').append('p').attr('class','info')
 		.html('Prosper is America’s first marketplace lending platform,\
-			with over $8 billion in funded loans. for more information visit <a\
-			href="https://www.prosper.com/">Prosper.com</a>. <br><br> \
-			Here I visualize the number of loans and population per state,\
-			the state with higher value has a darker color. for more information please\
-			 check <a href="\
-			https://github.com/bekaa/prosper-data-visualization/blob/master/README.md"\
-			 target="_blank">README</a> file or project\'s github <a href=\
-			 "https://github.com/bekaa/prosper-data-visualization" target="_blank"> \
-			repository</a>.');
-
+			with over $8 billion in funded loans. for more information visit \
+			<a href="https://www.prosper.com/">Prosper.com</a>.\
+			<br>Based on the published loan data,\
+			 I extracted the states with the number of loans made from each state.\
+			<br>Here I visualize the number of loans, population and score per state,\
+			the state with higher value has a darker color.\
+			<br>Each state has a score between 0 and 1, and it\'s evaluated in a\
+			 function of two variables ( loans/population and loans ), to give weight to states.\
+			<br>States with high score means that these states have both high number of loans\
+			 and high number of population which make them worth paying attention to.\
+			<br>And as map shows, 3 states have score higher than 0.7 which are California,\
+			 Illinois, and Georgia, and 18 states have score higher than 0.5.\
+			');
 	var svg = d3.select('body')
 		.append('svg')
+			.attr('xmlns',"http://www.w3.org/2000/svg")
 			.attr('xmlns:xlink', "http://www.w3.org/1999/xlink")
 			.attr('width', width + 'px')
-			.attr('height', height + 'px');
+			.attr('height', (height+footer_height) + 'px');
 	map    = svg.append('g').attr('class','map');
 	legend = svg.append('g').attr('class','legend')
-		.attr('transform','translate('+ legend_margin +',0)');
+		.attr('transform','translate('+ legend_margin +',100)');
 
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 	//  append count from states_borrower to states_geo
@@ -82,6 +87,41 @@ function main(error, geo, csv)
 	draw_legend();
 	// initialize visualization as it's click on type:loans and 100% percentage.
 	typeButton_clicked('loans');
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	// *** footer section ***
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	var footer = svg.append('g').attr('class','footer')
+		.attr('transform','translate(0,'+ (height+30) +')');
+
+	footer.append('line').attr({ x1:"30", y1:"0", x2:"1500", y2:"0"});
+
+	footer.append('text').attr({'x':30,'y':50 })
+		.text('For project files and extra details please check')
+
+	footer.append('a').attr('xlink:href',
+		"https://github.com/bekaa/prosper-data-visualization/blob/master/README.md")
+		.append('text').attr({'x':420,'y':50 }).text(' README')
+
+	footer.append('text').attr({'x':510,'y':50 })
+		.text('file or project\'s github')
+
+	footer.append('a').attr('xlink:href',"https://github.com/bekaa/prosper-data-visualization/")
+		.append('text').attr({'x':690,'y':50 }).text(' repository.')
+
+	var contact_info = footer.append('text').attr({'x':30,'y':80 })
+	contact_info.append('tspan')
+		.text('Posted by: Khaled Salah')
+	contact_info.append('tspan')
+		.attr({'x':30,'dy':30})
+		.text('Email address: scikdeg@gmail.com')
+	contact_info.append('tspan')
+		.attr({'x':30,'dy':30})
+		.text('Github: https://github.com/bekaa')
+	contact_info.append('tspan')
+		.attr({'x':30,'dy':30})
+		.text('linkedin: https://www.linkedin.com/in/bekaaa')
+
+	footer.append('line').attr({ x1:"30", y1:"200", x2:"1500", y2:"200"});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 }

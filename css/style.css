@@ -2,8 +2,10 @@ html,
 body
 {
 	zoom: 90%;
-	margin: 2px;
+	margin: 4px;
 	padding: 0;
+	min-height: 100%;
+
 }
 .title
 {
@@ -12,9 +14,13 @@ body
 }
 .info
 {
+	line-height: 30px;
+	display: block;
 	text-align: left;
+	text-overflow:ellipsis;
 	padding-left: 30px;
-	font: 18px sans-serif;
+	font-family: sans-serif;
+	font-size: 18px;
 }
 svg
 {
@@ -58,6 +64,7 @@ svg
 .legend .buttons .percentageButtons .rect.clicked
 {
 	fill: black;
+	stroke:red;
 }
 .legend .buttons .typeButtons text,
 .legend .buttons .percentageButtons text,
@@ -74,3 +81,23 @@ svg
 	stroke:#C0C0C0;
 	stroke-width:2;
 }
+/******************************/
+/*     Footer    */
+.footer
+{
+	position:absolute;
+	text-align: left;
+	fill: black;
+	font: 18px sans-serif;
+}
+.footer a /*hyperlinks*/
+{
+	text-decoration: underline;
+	fill:red;
+}
+.footer line
+{
+	stroke:#C0C0C0;
+	stroke-width:5;
+}
+/******************************/
