@@ -22,7 +22,8 @@ function main(error, geo, csv)
 	states_geo = geo;
 	states_csv = csv;
 	// add title.
-	d3.select('body').append('h3').attr('class','title').text('Data visualization of the borrowers at Prosper.com');
+	d3.select('body').append('h3').attr('class','title')
+		.text('Data visualization of the borrowers at Prosper.com');
 	// add some text below the title.
 	d3.select('body').append('p').attr('class','info')
 		.html('Prosper is America’s first marketplace lending platform,\
@@ -37,8 +38,7 @@ function main(error, geo, csv)
 			<br>States with high score means that these states have both high number of loans\
 			 and high number of population which make them worth paying attention to.\
 			<br>And as map shows, 3 states have score higher than 0.7 which are California,\
-			 Illinois, and Georgia, and 18 states have score higher than 0.5.\
-			');
+			 Illinois, and Georgia, and 18 states have score higher than 0.5.');
 	var svg = d3.select('body')
 		.append('svg')
 			.attr('xmlns',"http://www.w3.org/2000/svg")
