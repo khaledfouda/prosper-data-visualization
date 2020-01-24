@@ -1,9 +1,9 @@
 # visualizing states of prosper.com borrowers  
 
 ### Visualization, gist, and github links
-the project files can be viewed on gist from each of these links : [gist.github](https://gist.github.com/bekaaa/07b8f3d90f10b06a3938ef9809c8e914) or [bl.ocks.org](http://bl.ocks.org/bekaaa/07b8f3d90f10b06a3938ef9809c8e914/)  
-And the Visualization from this link : [bl.ocks.org-raw](http://bl.ocks.org/bekaaa/raw/07b8f3d90f10b06a3938ef9809c8e914/).  
-And for sure the github repository https://github.com/bekaaa/prosper-data-visualization .  
+the project files can be viewed on gist from each of these links : [gist.github](https://gist.github.com/khaledfouda/07b8f3d90f10b06a3938ef9809c8e914) or [bl.ocks.org](http://bl.ocks.org/khaledfouda/07b8f3d90f10b06a3938ef9809c8e914/)  
+And the Visualization from this link : [bl.ocks.org-raw](http://bl.ocks.org/khaledfouda/raw/07b8f3d90f10b06a3938ef9809c8e914/).  
+And for sure the github repository https://github.com/khaledfouda/prosper-data-visualization .  
 
 ------------
 
