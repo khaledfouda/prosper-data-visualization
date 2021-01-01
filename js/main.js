@@ -30,7 +30,7 @@ function main(error, geo, csv)
 			with over $8 billion in funded loans. for more information visit \
 			<a href="https://www.prosper.com/">Prosper.com</a>.\
 			<br>Based on the published loan data,\
-			 I extracted the sum and count of loans made from each state.\
+			 I extracted the number of loans made from each state.\
 			<br>Here I visualize the number of loans, population and score per state,\
 			the state with higher value has a darker color.\
 			<br>Each state has a score between 0 and 1, and it\'s evaluated as a\
@@ -38,7 +38,8 @@ function main(error, geo, csv)
 			<br>States with high score have both high number of loans and population\
 			 which make them worth paying attention to.\
 			<br>As shown in the map below, the three states: California, Illinois, and Georgia have score higher than 0.7,\
-			 moreover, 18 states have score higher than 0.5.');
+			 moreover, 18 states have score higher than 0.5.\
+			<br>Code can be found on github.com/khaledfouda/prosper-data-visualization');
 	var svg = d3.select('body')
 		.append('svg')
 			.attr('xmlns',"http://www.w3.org/2000/svg")
@@ -93,15 +94,15 @@ function main(error, geo, csv)
 	var footer = svg.append('g').attr('class','footer')
 		.attr('transform','translate(0,'+ (height+30) +')');
 
-	footer.append('line').attr({ x1:"30", y1:"0", x2:"1500", y2:"0"});
+	//footer.append('line').attr({ x1:"30", y1:"0", x2:"1500", y2:"0"});
 
-	footer.append('text').attr({'x':30,'y':50 })
-		.text('Code can be found in this github');
+	//footer.append('text').attr({'x':30,'y':35 })
+	//	.text('Code can be found in this github');
 
-	footer.append('a').attr('xlink:href',"https://github.com/khaledfouda/prosper-data-visualization")
-		.append('text').attr({'x':690,'y':50 }).text(' repository.');
+	//footer.append('a').attr('xlink:href',"https://github.com/khaledfouda/prosper-data-visualization")
+	//	.append('text').attr({'x':60,'y':35 }).text(' repository.');
 
-	footer.append('line').attr({ x1:"30", y1:"200", x2:"1500", y2:"200"});
+	footer.append('line').attr({ x1:"30", y1:"40", x2:"1500", y2:"40"});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 }
