@@ -93,7 +93,7 @@ svg
 .footer a /*hyperlinks*/
 {
 	text-decoration: underline;
-	fill:red;
+	fill:black;
 }
 .footer line
 {
