@@ -30,15 +30,15 @@ function main(error, geo, csv)
 			with over $8 billion in funded loans. for more information visit \
 			<a href="https://www.prosper.com/">Prosper.com</a>.\
 			<br>Based on the published loan data,\
-			 I extracted the states with the number of loans made from each state.\
+			 I extracted the sum and count of loans made from each state.\
 			<br>Here I visualize the number of loans, population and score per state,\
 			the state with higher value has a darker color.\
-			<br>Each state has a score between 0 and 1, and it\'s evaluated in a\
-			 function of two variables ( loans/population and loans ), to give weight to states.\
-			<br>States with high score means that these states have both high number of loans\
-			 and high number of population which make them worth paying attention to.\
-			<br>And as map shows, 3 states have score higher than 0.7 which are California,\
-			 Illinois, and Georgia, and 18 states have score higher than 0.5.');
+			<br>Each state has a score between 0 and 1, and it\'s evaluated as a\
+			 function of two variables: population and loans.\
+			<br>States with high score have both high number of loans and population\
+			 which make them worth paying attention to.\
+			<br>As shown in the map below, the three states: California, Illinois, and Georgia have score higher than 0.7,\
+			 moreover, 18 states have score higher than 0.5.');
 	var svg = d3.select('body')
 		.append('svg')
 			.attr('xmlns',"http://www.w3.org/2000/svg")
@@ -96,30 +96,10 @@ function main(error, geo, csv)
 	footer.append('line').attr({ x1:"30", y1:"0", x2:"1500", y2:"0"});
 
 	footer.append('text').attr({'x':30,'y':50 })
-		.text('For project files and extra details please check');
+		.text('Code can be found in this github');
 
-	footer.append('a').attr('xlink:href',
-		"https://github.com/bekaa/prosper-data-visualization/blob/master/README.md")
-		.append('text').attr({'x':420,'y':50 }).text(' README');
-
-	footer.append('text').attr({'x':510,'y':50 })
-		.text('file or project\'s github');
-
-	footer.append('a').attr('xlink:href',"https://github.com/bekaa/prosper-data-visualization/")
+	footer.append('a').attr('xlink:href',"https://github.com/khaledfouda/prosper-data-visualization")
 		.append('text').attr({'x':690,'y':50 }).text(' repository.');
-
-	var contact_info = footer.append('text').attr({'x':30,'y':80 });
-	contact_info.append('tspan')
-		.text('Posted by: Khaled Salah');
-	contact_info.append('tspan')
-		.attr({'x':30,'dy':30})
-		.text('Email address: scikdeg@gmail.com');
-	contact_info.append('tspan')
-		.attr({'x':30,'dy':30})
-		.text('Github: https://github.com/bekaa');
-	contact_info.append('tspan')
-		.attr({'x':30,'dy':30})
-		.text('linkedin: https://www.linkedin.com/in/bekaaa');
 
 	footer.append('line').attr({ x1:"30", y1:"200", x2:"1500", y2:"200"});
 	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
