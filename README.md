@@ -1,7 +1,7 @@
 # visualizing states of prosper.com borrowers  
 
 ### Visualization, gist, and github links
-**The visualization can be seen here: [bl.ocks.org-raw](http://bl.ocks.org/khaledfouda/raw/07b8f3d90f10b06a3938ef9809c8e914/).**    
+**The visualization: [bl.ocks.org-raw](http://bl.ocks.org/khaledfouda/raw/07b8f3d90f10b06a3938ef9809c8e914/).**    
 
 ------------
 
